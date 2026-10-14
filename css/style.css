@@ -1,0 +1,917 @@
+/* =========================================================
+   DD DIGITAL — folha de estilos única
+   Organização do ficheiro:
+   01. Tipos de letra      06. Serviços
+   02. Variáveis (:root)   07. Processo
+   03. Base e reset        08. Porquê a DD Digital
+   04. Cabeçalho e menu    09. FAQ
+   05. Hero                10. Contacto
+                           11. Rodapé
+                           12. Páginas simples (privacidade / 404)
+                           13. Animações
+                           14. Ecrãs maiores (tablet e PC)
+   ========================================================= */
+
+
+/* ===== 01. TIPOS DE LETRA ================================
+   Guardados na pasta /fonts. Não há pedidos ao Google,
+   por isso o site carrega mais depressa e não envia dados
+   dos visitantes para fora.
+   ========================================================= */
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-var.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../fonts/space-grotesk-var.woff2') format('woff2');
+  font-weight: 500 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ===== 02. VARIÁVEIS =====================================
+   Mudar uma cor aqui muda-a no site inteiro.
+   ========================================================= */
+:root {
+  /* Cores */
+  --branco: #FFFFFF;
+  --nevoa: #F4F7F5;          /* fundo das secções alternadas */
+  --tinta: #0B1512;          /* texto principal */
+  --cinza: #5A6B64;          /* texto secundário */
+  --linha: #E3E9E5;          /* bordas finas */
+  --verde: #088357;          /* cor principal da marca (ajustado para contraste AA com texto branco) */
+  --verde-escuro: #066E49;   /* hover e texto verde */
+  --menta: #D7F2E5;          /* fundos de etiquetas */
+  --verde-luz: #3FD9A0;      /* só detalhes gráficos, nunca texto */
+
+  /* Tipos de letra */
+  --fonte-titulo: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --fonte-texto: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --fonte-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Espaçamentos */
+  --espaco-seccao: 88px;     /* altura de respiro entre secções */
+  --largura-max: 1180px;     /* largura máxima do conteúdo */
+  --raio: 14px;              /* cantos arredondados */
+  --raio-pequeno: 10px;
+
+  /* Sombras (muito subtis — nada de efeitos pesados) */
+  --sombra: 0 1px 2px rgba(11, 21, 18, .04);
+  --sombra-alta: 0 12px 32px rgba(11, 21, 18, .08);
+}
+
+
+/* ===== 03. BASE E RESET ================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px; /* para as âncoras não ficarem escondidas pelo menu fixo */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--branco);
+  color: var(--tinta);
+  font-family: var(--fonte-texto);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* rede de segurança: nunca deixar aparecer scroll horizontal */
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  margin: 0 0 16px;
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(2.1rem, 7vw, 3.6rem); }
+h2 { font-size: clamp(1.7rem, 5vw, 2.6rem); }
+h3 { font-size: 1.15rem; font-weight: 600; }
+
+p { margin: 0 0 16px; }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--verde-escuro); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--verde); }
+
+img, svg { max-width: 100%; height: auto; display: block; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+/* Foco sempre visível para quem navega com o teclado */
+:focus-visible {
+  outline: 3px solid var(--verde);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Link que salta para o conteúdo (só aparece com Tab) */
+.salta-conteudo {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 200;
+  background: var(--tinta);
+  color: var(--branco);
+  padding: 12px 20px;
+  border-radius: var(--raio-pequeno);
+  text-decoration: none;
+  transition: top .2s;
+}
+.salta-conteudo:focus { top: 16px; color: var(--branco); }
+
+/* Texto só para leitores de ecrã */
+.so-leitor {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* --- Blocos reutilizáveis --- */
+.wrap {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.seccao { padding: var(--espaco-seccao) 0; }
+.seccao--nevoa { background: var(--nevoa); }
+
+/* Etiqueta pequena que abre cada secção */
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fonte-mono);
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--verde-escuro);
+  background: var(--menta);
+  padding: 6px 12px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.etiqueta::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--verde);
+}
+
+.cabecalho-seccao { max-width: 680px; margin-bottom: 44px; }
+.cabecalho-seccao p { color: var(--cinza); font-size: 1.05rem; margin-bottom: 0; }
+
+/* --- Botões --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;              /* área de toque confortável */
+  padding: 14px 26px;
+  border: 1px solid transparent;
+  border-radius: var(--raio-pequeno);
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s, border-color .2s, transform .2s, color .2s;
+}
+.btn--principal { background: var(--verde); color: var(--branco); }
+.btn--principal:hover { background: var(--verde-escuro); color: var(--branco); transform: translateY(-2px); }
+
+.btn--contorno { background: var(--branco); color: var(--tinta); border-color: var(--linha); }
+.btn--contorno:hover { border-color: var(--verde); color: var(--verde-escuro); transform: translateY(-2px); }
+
+.btn--claro { background: var(--branco); color: var(--tinta); }
+.btn--claro:hover { background: var(--menta); color: var(--verde-escuro); }
+
+.btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+
+/* ===== 04. CABEÇALHO E MENU ============================== */
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, .88);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--linha);
+}
+
+.cabecalho__interior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 72px;
+}
+
+/* Logótipo */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -.02em;
+  color: var(--tinta);
+  text-decoration: none;
+}
+.logo:hover { color: var(--tinta); }
+.logo__marca { width: 32px; height: 32px; }
+.logo span { color: var(--verde); }
+
+/* Navegação */
+.nav { display: flex; align-items: center; gap: 4px; }
+
+.nav__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav__lista a {
+  display: block;
+  padding: 12px 14px;
+  color: var(--tinta);
+  font-size: .97rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color .2s, color .2s;
+}
+.nav__lista a:hover { background: var(--nevoa); color: var(--verde-escuro); }
+
+/* Seletor de idioma PT | EN */
+.idiomas {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--linha);
+  border-radius: 100px;
+  background: var(--branco);
+}
+.idiomas a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-family: var(--fonte-mono);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--cinza);
+  text-decoration: none;
+  transition: background-color .2s, color .2s;
+}
+.idiomas a:hover { color: var(--tinta); }
+.idiomas a[aria-current="true"] { background: var(--tinta); color: var(--branco); }
+
+/* Botão do menu em telemóvel */
+.menu-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px; height: 46px;
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-pequeno);
+  cursor: pointer;
+  padding: 0;
+}
+.menu-botao__barras,
+.menu-botao__barras::before,
+.menu-botao__barras::after {
+  content: '';
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--tinta);
+  border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.menu-botao__barras { position: relative; }
+.menu-botao__barras::before { position: absolute; top: -6px; }
+.menu-botao__barras::after  { position: absolute; top: 6px; }
+
+.menu-botao[aria-expanded="true"] .menu-botao__barras { background: transparent; }
+.menu-botao[aria-expanded="true"] .menu-botao__barras::before { transform: translateY(6px) rotate(45deg); }
+.menu-botao[aria-expanded="true"] .menu-botao__barras::after  { transform: translateY(-6px) rotate(-45deg); }
+
+/* Em telemóvel o menu abre por baixo do cabeçalho */
+@media (max-width: 899px) {
+  .nav {
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    background: var(--branco);
+    border-bottom: 1px solid var(--linha);
+    padding: 18px 20px 26px;
+    box-shadow: var(--sombra-alta);
+    display: none;
+  }
+  .nav.esta-aberto { display: flex; }
+  .nav__lista a { padding: 14px; font-size: 1.05rem; }
+  .nav .btn { width: 100%; }
+  .idiomas { align-self: flex-start; }
+}
+@media (min-width: 900px) {
+  .menu-botao { display: none; }
+}
+
+
+/* ===== 05. HERO ==========================================
+   Fundo branco com uma grelha muito ténue e um brilho verde
+   — tudo feito em CSS, sem imagens.
+   ========================================================= */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 0 72px;
+  background:
+    radial-gradient(760px 420px at 78% -5%, rgba(63, 217, 160, .20), transparent 62%),
+    radial-gradient(520px 320px at 10% 8%, rgba(10, 143, 95, .07), transparent 60%),
+    var(--branco);
+}
+
+/* Grelha de linhas do fundo */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(11, 21, 18, .045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 21, 18, .045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 60% 20%, #000 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 60% 20%, #000 0%, transparent 72%);
+  pointer-events: none;
+}
+
+.hero__interior {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* uma só coluna até ao PC, sem deixar o conteúdo forçar largura */
+  gap: 52px;
+}
+.hero__interior > * { min-width: 0; } /* evita que o mockup "empurre" a largura no telemóvel */
+
+.hero h1 { margin-bottom: 20px; }
+.hero h1 em { font-style: normal; color: var(--verde); }
+
+.hero__texto {
+  font-size: 1.12rem;
+  color: var(--cinza);
+  max-width: 54ch;
+  margin-bottom: 30px;
+}
+
+.hero__accoes { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
+
+/* Três provas rápidas por baixo dos botões */
+.provas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  padding-top: 28px;
+  border-top: 1px solid var(--linha);
+}
+.provas li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: .95rem;
+  color: var(--cinza);
+}
+.provas svg { width: 19px; height: 19px; color: var(--verde); flex-shrink: 0; margin-top: 2px; }
+.provas strong { color: var(--tinta); font-weight: 600; }
+
+/* --- Painel gráfico: uma janela de browser desenhada em CSS --- */
+.janela {
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-alta);
+  overflow: hidden;
+}
+.janela__barra {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  background: var(--nevoa);
+  border-bottom: 1px solid var(--linha);
+}
+.janela__ponto { width: 10px; height: 10px; border-radius: 50%; background: var(--linha); }
+.janela__url {
+  flex: 1;
+  margin-left: 6px;
+  padding: 5px 12px;
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: 100px;
+  font-family: var(--fonte-mono);
+  font-size: .72rem;
+  color: var(--cinza);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.janela__ecra { padding: 22px; }
+
+/* Conteúdo abstrato dentro da janela */
+.esboco { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.esboco__topo { display: flex; align-items: center; justify-content: space-between; }
+.esboco__marca { width: 70px; height: 10px; border-radius: 4px; background: var(--tinta); }
+.esboco__menu { display: flex; gap: 6px; }
+.esboco__menu span { width: 26px; height: 7px; border-radius: 4px; background: var(--linha); }
+
+.esboco__hero {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border-radius: var(--raio-pequeno);
+  background: linear-gradient(135deg, rgba(10, 143, 95, .10), rgba(63, 217, 160, .14));
+}
+.esboco__titulo { height: 14px; width: 78%; border-radius: 5px; background: var(--tinta); }
+.esboco__linha { height: 8px; border-radius: 4px; background: rgba(11, 21, 18, .14); }
+.esboco__linha--curta { width: 52%; }
+.esboco__btn { width: 104px; height: 30px; border-radius: 8px; background: var(--verde); margin-top: 6px; }
+
+.esboco__cartoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.esboco__cartao { height: 54px; border: 1px solid var(--linha); border-radius: 8px; background: var(--branco); }
+
+/* Selo de velocidade colado à janela */
+.selo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -26px;
+  margin-left: auto;
+  margin-right: 10px;
+  width: fit-content;
+  position: relative;
+  z-index: 2;
+  padding: 12px 18px;
+  background: var(--tinta);
+  color: var(--branco);
+  border-radius: var(--raio-pequeno);
+  box-shadow: var(--sombra-alta);
+}
+.selo__valor { font-family: var(--fonte-titulo); font-size: 1.5rem; font-weight: 700; color: var(--verde-luz); }
+.selo__texto { font-size: .78rem; line-height: 1.35; color: rgba(255, 255, 255, .78); }
+
+
+/* ===== 06. SERVIÇOS ====================================== */
+.grelha-servicos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+
+.servico {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px;
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+}
+.servico:hover {
+  border-color: rgba(10, 143, 95, .45);
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-alta);
+}
+
+.servico__icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px; height: 46px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: var(--menta);
+  color: var(--verde-escuro);
+}
+.servico__icone svg { width: 23px; height: 23px; }
+
+.servico p { color: var(--cinza); font-size: .97rem; }
+
+.servico__lista {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--linha);
+  display: grid;
+  gap: 8px;
+}
+.servico__lista li {
+  position: relative;
+  padding-left: 20px;
+  font-size: .9rem;
+  color: var(--cinza);
+}
+.servico__lista li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .62em;
+  width: 7px; height: 7px;
+  border-radius: 2px;
+  background: var(--verde-luz);
+}
+
+
+/* ===== 07. PROCESSO ====================================== */
+.grelha-processo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; counter-reset: passo; }
+
+.passo {
+  position: relative;
+  padding: 26px 24px;
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+}
+.passo__numero {
+  display: block;
+  font-family: var(--fonte-mono);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  color: var(--verde);
+  margin-bottom: 14px;
+}
+.passo p { color: var(--cinza); font-size: .95rem; }
+
+
+/* ===== 08. PORQUÊ A DD DIGITAL =========================== */
+.porque { display: grid; grid-template-columns: minmax(0, 1fr); gap: 44px; }
+
+.razoes { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+.razao { display: flex; gap: 16px; }
+.razao__icone {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  color: var(--verde-escuro);
+}
+.razao__icone svg { width: 21px; height: 21px; }
+.razao h3 { margin-bottom: 6px; }
+.razao p { color: var(--cinza); font-size: .95rem; }
+
+/* Painel escuro com os números */
+.numeros {
+  align-self: start;
+  padding: 32px 28px;
+  background: var(--tinta);
+  color: var(--branco);
+  border-radius: var(--raio);
+  background-image: radial-gradient(420px 220px at 90% 0%, rgba(63, 217, 160, .22), transparent 65%);
+}
+.numeros h3 { color: var(--branco); margin-bottom: 22px; }
+.numeros__lista { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
+.numeros__item { padding-bottom: 22px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+.numeros__item:last-child { padding-bottom: 0; border-bottom: 0; }
+.numeros__valor {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--verde-luz);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.numeros__item p { font-size: .9rem; color: rgba(255, 255, 255, .72); }
+
+
+/* ===== 09. FAQ ===========================================
+   Usa <details>/<summary> do próprio HTML: funciona mesmo
+   que o JavaScript esteja desligado.
+   ========================================================= */
+.faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; max-width: 860px; }
+
+.faq details {
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-pequeno);
+  transition: border-color .2s;
+}
+.faq details[open] { border-color: rgba(10, 143, 95, .4); }
+
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  min-height: 60px;
+  font-family: var(--fonte-titulo);
+  font-size: 1.03rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+
+/* Sinal + que roda ao abrir */
+.faq summary::after {
+  content: '';
+  flex-shrink: 0;
+  width: 13px; height: 13px;
+  background:
+    linear-gradient(var(--verde), var(--verde)) center/13px 2px no-repeat,
+    linear-gradient(var(--verde), var(--verde)) center/2px 13px no-repeat;
+  transition: transform .25s;
+}
+.faq details[open] summary::after { transform: rotate(135deg); }
+
+.faq__resposta { padding: 0 22px 22px; color: var(--cinza); font-size: .97rem; }
+
+
+/* ===== 10. CONTACTO ====================================== */
+.contacto { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; }
+
+.formulario {
+  padding: 28px 24px;
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.campo { margin-bottom: 18px; }
+.campo label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: .9rem;
+  font-weight: 600;
+}
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 15px;
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  color: var(--tinta);
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-pequeno);
+  transition: border-color .2s, box-shadow .2s;
+}
+.campo textarea { min-height: 130px; resize: vertical; }
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(10, 143, 95, .14);
+  outline: none;
+}
+.campo input::placeholder, .campo textarea::placeholder { color: #9AA8A2; }
+
+/* Caixa de consentimento (RGPD) */
+.campo--consentimento { display: flex; align-items: flex-start; gap: 11px; }
+.campo--consentimento input {
+  width: 20px; height: 20px;
+  min-height: 0;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--verde);
+}
+.campo--consentimento label { margin: 0; font-size: .88rem; font-weight: 400; color: var(--cinza); }
+
+/* Campo-armadilha contra robôs de spam — invisível para pessoas */
+.anti-spam {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.formulario .btn { width: 100%; }
+
+.formulario__aviso {
+  margin-top: 14px;
+  padding: 13px 15px;
+  border-radius: var(--raio-pequeno);
+  font-size: .92rem;
+  display: none;
+}
+.formulario__aviso.esta-visivel { display: block; }
+.formulario__aviso.e-sucesso { background: var(--menta); color: var(--verde-escuro); }
+.formulario__aviso.e-erro { background: #FDECEC; color: #99201C; }
+
+/* Contactos diretos */
+.diretos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; align-content: start; }
+
+.direto {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 20px;
+  min-height: 76px;
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  text-decoration: none;
+  color: var(--tinta);
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.direto:hover {
+  color: var(--tinta);
+  border-color: rgba(10, 143, 95, .45);
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-alta);
+}
+.direto__icone {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--menta);
+  color: var(--verde-escuro);
+}
+.direto__icone svg { width: 21px; height: 21px; }
+.direto__etiqueta { display: block; font-size: .8rem; color: var(--cinza); }
+.direto__valor { display: block; font-weight: 600; font-size: 1.02rem; }
+
+.horario {
+  padding: 18px 20px;
+  background: var(--nevoa);
+  border-radius: var(--raio);
+  font-size: .9rem;
+  color: var(--cinza);
+}
+.horario strong { color: var(--tinta); display: block; margin-bottom: 4px; }
+
+
+/* ===== 11. RODAPÉ ======================================== */
+.rodape {
+  background: var(--tinta);
+  color: rgba(255, 255, 255, .72);
+  padding: 58px 0 28px;
+  font-size: .94rem;
+}
+.rodape__topo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; padding-bottom: 34px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+
+.rodape .logo { color: var(--branco); margin-bottom: 14px; }
+.rodape .logo:hover { color: var(--branco); }
+.rodape__sobre p { max-width: 42ch; color: rgba(255, 255, 255, .68); }
+
+.rodape h4 {
+  font-size: .78rem;
+  font-family: var(--fonte-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .5);
+  margin-bottom: 14px;
+}
+.rodape__lista { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.rodape__lista a { color: rgba(255, 255, 255, .78); text-decoration: none; }
+.rodape__lista a:hover { color: var(--verde-luz); }
+
+.rodape .idiomas { background: transparent; border-color: rgba(255, 255, 255, .18); }
+.rodape .idiomas a { color: rgba(255, 255, 255, .6); }
+.rodape .idiomas a:hover { color: var(--branco); }
+.rodape .idiomas a[aria-current="true"] { background: var(--branco); color: var(--tinta); }
+
+.rodape__fim {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 24px;
+  font-size: .86rem;
+}
+.rodape__fim a { color: rgba(255, 255, 255, .78); }
+
+/* Crédito DD Digital */
+.credito { margin: 0; color: rgba(255, 255, 255, .55); }
+.credito a { color: var(--verde-luz); text-decoration: none; }
+.credito a:hover { text-decoration: underline; }
+
+
+/* ===== 12. PÁGINAS SIMPLES (privacidade / 404) =========== */
+.pagina-simples { padding: 64px 0 var(--espaco-seccao); }
+.texto-legal { max-width: 760px; }
+.texto-legal h2 { font-size: 1.4rem; margin-top: 38px; }
+.texto-legal h2:first-of-type { margin-top: 28px; }
+.texto-legal ul { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; margin: 0 0 16px; }
+.texto-legal ul li { position: relative; padding-left: 20px; color: var(--cinza); }
+.texto-legal ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .62em;
+  width: 7px; height: 7px;
+  border-radius: 2px;
+  background: var(--verde-luz);
+}
+.texto-legal p { color: var(--cinza); }
+.data-revisao { font-family: var(--fonte-mono); font-size: .82rem; color: var(--cinza); }
+
+.erro-404 { text-align: center; padding: 96px 0; }
+.erro-404__codigo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(4.5rem, 18vw, 8rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--verde);
+  margin-bottom: 10px;
+}
+.erro-404 p { color: var(--cinza); max-width: 46ch; margin-inline: auto; }
+.erro-404 .btn { margin-top: 10px; }
+.erro-404__en { margin-top: 26px; padding-top: 26px; border-top: 1px solid var(--linha); }
+
+
+/* ===== 13. ANIMAÇÕES =====================================
+   Os blocos aparecem suavemente ao entrar no ecrã.
+   ========================================================= */
+.surge {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .55s ease-out, transform .55s ease-out;
+}
+.surge.e-visivel { opacity: 1; transform: none; }
+
+/* Quem tiver "reduzir movimento" ligado no sistema não vê animações */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .surge { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+
+/* ===== 14. ECRÃS MAIORES ================================= */
+
+/* Tablet */
+@media (min-width: 640px) {
+  :root { --espaco-seccao: 104px; }
+  .wrap { padding: 0 28px; }
+  .grelha-servicos { grid-template-columns: repeat(2, 1fr); }
+  .grelha-processo { grid-template-columns: repeat(2, 1fr); }
+  .provas { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .provas li { flex-direction: column; gap: 8px; }
+  .diretos { grid-template-columns: repeat(2, 1fr); }
+  .horario { grid-column: 1 / -1; }
+  .rodape__topo { grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+  .formulario { padding: 34px 32px; }
+  .campo--metade { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .campo--metade .campo { margin-bottom: 0; }
+}
+
+/* PC */
+@media (min-width: 900px) {
+  :root { --espaco-seccao: 124px; }
+  body { font-size: 17.5px; }
+
+  .nav__lista { flex-direction: row; gap: 2px; }
+  .nav { gap: 14px; }
+
+  .hero { padding: 86px 0 104px; }
+  .hero__interior { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: 64px; }
+
+  .grelha-servicos { grid-template-columns: repeat(3, 1fr); }
+  .grelha-processo { grid-template-columns: repeat(4, 1fr); }
+  .servico { padding: 32px 28px; }
+
+  .porque { grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: start; }
+  .razoes { gap: 30px; }
+
+  .contacto { grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: start; }
+  .diretos { grid-template-columns: 1fr; }
+}
+
+/* Ecrãs grandes */
+@media (min-width: 1200px) {
+  .hero__texto { font-size: 1.18rem; }
+}

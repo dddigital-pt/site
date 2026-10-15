@@ -2,7 +2,7 @@
    DD DIGITAL — folha de estilos única
    Organização do ficheiro:
    01. Tipos de letra      06. Serviços
-   02. Variáveis (:root)   07. Processo
+   02. Variáveis (:root)   07. Processo (caminho)
    03. Base e reset        08. Porquê a DD Digital
    04. Cabeçalho e menu    09. FAQ
    05. Hero                10. Contacto
@@ -14,44 +14,39 @@
 
 
 /* ===== 01. TIPOS DE LETRA ================================
-   Guardados na pasta /fonts. Não há pedidos ao Google,
+   Guardada na pasta /fonts. Não há pedidos ao Google,
    por isso o site carrega mais depressa e não envia dados
    dos visitantes para fora.
    ========================================================= */
 @font-face {
-  font-family: 'Inter';
-  src: url('../fonts/inter-var.woff2') format('woff2');
+  font-family: 'Montserrat';
+  src: url('../fonts/montserrat-var.woff2') format('woff2');
   font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Space Grotesk';
-  src: url('../fonts/space-grotesk-var.woff2') format('woff2');
-  font-weight: 500 700;
   font-style: normal;
   font-display: swap;
 }
 
 
 /* ===== 02. VARIÁVEIS =====================================
-   Mudar uma cor aqui muda-a no site inteiro.
+   Paleta de marca DD Digital. Mudar uma cor aqui muda-a
+   no site inteiro.
    ========================================================= */
 :root {
   /* Cores */
   --branco: #FFFFFF;
-  --nevoa: #F4F7F5;          /* fundo das secções alternadas */
-  --tinta: #0B1512;          /* texto principal */
-  --cinza: #5A6B64;          /* texto secundário */
-  --linha: #E3E9E5;          /* bordas finas */
-  --verde: #088357;          /* cor principal da marca (ajustado para contraste AA com texto branco) */
-  --verde-escuro: #066E49;   /* hover e texto verde */
-  --menta: #D7F2E5;          /* fundos de etiquetas */
-  --verde-luz: #3FD9A0;      /* só detalhes gráficos, nunca texto */
+  --nevoa: #F7F8F5;          /* Neutro — fundo das secções alternadas */
+  --tinta: #2E2E2E;          /* Carvão — texto principal */
+  --cinza: #4A5F54;          /* texto secundário (tom escurecido do Verde suave, legível sobre branco) */
+  --suave: #6B8F7A;          /* Verde suave — bordas, ícones, detalhes decorativos */
+  --linha: #E3E8E1;          /* bordas finas */
+  --verde: #0F2D24;          /* Verde Profundo — cor principal da marca */
+  --verde-escuro: #163F2E;   /* tom intermédio — hover e texto em links */
+  --menta: #EAF5D6;          /* fundo claro das etiquetas (tom do Verde-Lima) */
+  --lima: #A7E63A;           /* Verde-Lima — destaques sobre fundo escuro */
 
   /* Tipos de letra */
-  --fonte-titulo: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
-  --fonte-texto: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --fonte-titulo: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --fonte-texto: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   --fonte-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
   /* Espaçamentos */
@@ -61,8 +56,8 @@
   --raio-pequeno: 10px;
 
   /* Sombras (muito subtis — nada de efeitos pesados) */
-  --sombra: 0 1px 2px rgba(11, 21, 18, .04);
-  --sombra-alta: 0 12px 32px rgba(11, 21, 18, .08);
+  --sombra: 0 1px 2px rgba(46, 46, 46, .04);
+  --sombra-alta: 0 12px 32px rgba(46, 46, 46, .08);
 }
 
 
@@ -236,8 +231,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   text-decoration: none;
 }
 .logo:hover { color: var(--tinta); }
-.logo__marca { width: 32px; height: 32px; }
-.logo span { color: var(--verde); }
+.logo__marca { height: 30px; width: auto; }
+.logo__destaque { color: var(--verde); }
 
 /* Navegação */
 .nav { display: flex; align-items: center; gap: 4px; }
@@ -259,33 +254,34 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .nav__lista a:hover { background: var(--nevoa); color: var(--verde-escuro); }
 
-/* Seletor de idioma PT | EN */
+/* Seletor de idioma PT | EN — um "toggle" com identidade própria,
+   para não se confundir com os links do menu */
 .idiomas {
   display: inline-flex;
   align-items: center;
   gap: 2px;
-  padding: 4px;
-  border: 1px solid var(--linha);
+  margin-left: 10px;
+  padding: 3px;
+  background: var(--nevoa);
   border-radius: 100px;
-  background: var(--branco);
 }
 .idiomas a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  padding: 6px 16px;
+  padding: 4px 14px;
   border-radius: 100px;
   font-family: var(--fonte-mono);
-  font-size: .78rem;
-  font-weight: 600;
+  font-size: .76rem;
+  font-weight: 700;
   letter-spacing: .06em;
   color: var(--cinza);
   text-decoration: none;
-  transition: background-color .2s, color .2s;
+  transition: color .2s, background-color .2s;
 }
-.idiomas a:hover { color: var(--tinta); }
-.idiomas a[aria-current="true"] { background: var(--tinta); color: var(--branco); }
+.idiomas a:hover { color: var(--verde); }
+.idiomas a[aria-current="true"] { background: var(--verde); color: var(--branco); }
 
 /* Botão do menu em telemóvel */
 .menu-botao {
@@ -350,8 +346,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   overflow: hidden;
   padding: 64px 0 72px;
   background:
-    radial-gradient(760px 420px at 78% -5%, rgba(63, 217, 160, .20), transparent 62%),
-    radial-gradient(520px 320px at 10% 8%, rgba(10, 143, 95, .07), transparent 60%),
+    radial-gradient(760px 420px at 78% -5%, rgba(167, 230, 58, .20), transparent 62%),
+    radial-gradient(520px 320px at 10% 8%, rgba(15, 45, 36, .07), transparent 60%),
     var(--branco);
 }
 
@@ -361,8 +357,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(11, 21, 18, .045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(11, 21, 18, .045) 1px, transparent 1px);
+    linear-gradient(to right, rgba(46, 46, 46, .045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(46, 46, 46, .045) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(circle at 60% 20%, #000 0%, transparent 72%);
   -webkit-mask-image: radial-gradient(circle at 60% 20%, #000 0%, transparent 72%);
@@ -390,13 +386,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .hero__accoes { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
 
-/* Três provas rápidas por baixo dos botões */
+/* Três provas rápidas, em formato de faixa */
 .provas {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 14px;
-  padding-top: 28px;
-  border-top: 1px solid var(--linha);
+  gap: 20px;
 }
 .provas li {
   display: flex;
@@ -408,12 +402,90 @@ ul { margin: 0; padding: 0; list-style: none; }
 .provas svg { width: 19px; height: 19px; color: var(--verde); flex-shrink: 0; margin-top: 2px; }
 .provas strong { color: var(--tinta); font-weight: 600; }
 
-/* --- Painel gráfico: uma janela de browser desenhada em CSS --- */
+/* Faixa escura com as três provas, entre o hero e os serviços */
+.faixa-provas { background: var(--verde); }
+.faixa-provas .provas { padding: 28px 0; }
+.faixa-provas .provas li { color: rgba(255, 255, 255, .72); }
+.faixa-provas .provas svg { color: var(--lima); }
+.faixa-provas .provas strong { color: var(--branco); }
+
+@media (min-width: 640px) {
+  .faixa-provas .provas li {
+    padding-left: 24px;
+    border-left: 1px solid rgba(255, 255, 255, .14);
+  }
+  .faixa-provas .provas li:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
+/* --- Painel gráfico: PC e telemóvel desenhados em CSS, mostrando
+   um site (no portátil) e um biolink (no telemóvel) --- */
+.dispositivos {
+  position: relative;
+  padding: 6px 14px 46px 6px;
+}
+
+/* Portátil: moldura escura + ecrã com uma janela de browser dentro */
+.portatil {
+  background: var(--tinta);
+  border-radius: 16px 16px 5px 5px;
+  padding: 10px 10px 16px;
+  box-shadow: var(--sombra-alta);
+}
+.portatil__base {
+  width: 64%;
+  height: 10px;
+  margin: 0 auto;
+  background: linear-gradient(var(--suave), var(--tinta));
+  border-radius: 0 0 8px 8px;
+}
+
+/* Telemóvel sobreposto ao canto do portátil, com um biolink dentro */
+.telemovel {
+  position: absolute;
+  right: -2%;
+  bottom: -6%;
+  width: 38%;
+  max-width: 168px;
+  z-index: 2;
+  background: var(--tinta);
+  border-radius: 28px;
+  padding: 10px 9px;
+  box-shadow: var(--sombra-alta);
+}
+.telemovel__notch {
+  width: 32%;
+  height: 5px;
+  margin: 0 auto 10px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .18);
+}
+.telemovel__ecra {
+  background: var(--branco);
+  border-radius: 18px;
+  padding: 18px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.telemovel__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, var(--verde), var(--lima));
+}
+.telemovel__nome { width: 58%; height: 8px; border-radius: 4px; background: var(--tinta); opacity: .85; margin-bottom: 16px; }
+.telemovel__links { width: 100%; display: grid; gap: 8px; }
+.telemovel__link { height: 24px; border-radius: 100px; background: var(--nevoa); border: 1px solid var(--linha); }
+.telemovel__link--ativo { background: var(--menta); border-color: transparent; }
+
 .janela {
   background: var(--branco);
   border: 1px solid var(--linha);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-alta);
+  border-radius: var(--raio-pequeno);
   overflow: hidden;
 }
 .janela__barra {
@@ -453,112 +525,231 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: 10px;
   padding: 20px;
   border-radius: var(--raio-pequeno);
-  background: linear-gradient(135deg, rgba(10, 143, 95, .10), rgba(63, 217, 160, .14));
+  background: linear-gradient(135deg, rgba(15, 45, 36, .10), rgba(167, 230, 58, .14));
 }
 .esboco__titulo { height: 14px; width: 78%; border-radius: 5px; background: var(--tinta); }
-.esboco__linha { height: 8px; border-radius: 4px; background: rgba(11, 21, 18, .14); }
+.esboco__linha { height: 8px; border-radius: 4px; background: rgba(46, 46, 46, .14); }
 .esboco__linha--curta { width: 52%; }
 .esboco__btn { width: 104px; height: 30px; border-radius: 8px; background: var(--verde); margin-top: 6px; }
 
 .esboco__cartoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .esboco__cartao { height: 54px; border: 1px solid var(--linha); border-radius: 8px; background: var(--branco); }
 
-/* Selo de velocidade colado à janela */
-.selo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: -26px;
-  margin-left: auto;
-  margin-right: 10px;
-  width: fit-content;
-  position: relative;
-  z-index: 2;
-  padding: 12px 18px;
-  background: var(--tinta);
-  color: var(--branco);
-  border-radius: var(--raio-pequeno);
-  box-shadow: var(--sombra-alta);
-}
-.selo__valor { font-family: var(--fonte-titulo); font-size: 1.5rem; font-weight: 700; color: var(--verde-luz); }
-.selo__texto { font-size: .78rem; line-height: 1.35; color: rgba(255, 255, 255, .78); }
-
-
 /* ===== 06. SERVIÇOS ====================================== */
-.grelha-servicos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
 
-.servico {
-  display: flex;
-  flex-direction: column;
-  padding: 28px 24px;
+/* Cartão geral: separadores (abas) em cima, conteúdo em baixo.
+   As abas trocam o conteúdo com JavaScript; sem JavaScript fica
+   sempre visível a primeira categoria (Sites). */
+.servicos-dashboard {
   background: var(--branco);
   border: 1px solid var(--linha);
   border-radius: var(--raio);
-  transition: border-color .25s, transform .25s, box-shadow .25s;
-}
-.servico:hover {
-  border-color: rgba(10, 143, 95, .45);
-  transform: translateY(-3px);
-  box-shadow: var(--sombra-alta);
+  box-shadow: var(--sombra);
+  overflow: hidden;
 }
 
-.servico__icone {
+.servicos-abas {
+  display: flex;
+  gap: 6px;
+  padding: 14px;
+  background: var(--nevoa);
+  border-bottom: 1px solid var(--linha);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.servicos-abas::-webkit-scrollbar { display: none; }
+
+.aba-botao {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 46px; height: 46px;
-  margin-bottom: 18px;
-  border-radius: 12px;
-  background: var(--menta);
-  color: var(--verde-escuro);
+  gap: 9px;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cinza);
+  font-family: var(--fonte-texto);
+  font-size: .88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .2s, color .2s;
 }
-.servico__icone svg { width: 23px; height: 23px; }
+.aba-botao:hover { background: var(--linha); }
+.aba-botao.is-ativo { background: var(--verde); color: var(--branco); }
+.aba-botao.is-ativo:hover { background: var(--verde); }
 
-.servico p { color: var(--cinza); font-size: .97rem; }
+.aba-botao__icone { display: inline-flex; flex-shrink: 0; }
+.aba-botao__icone svg { width: 18px; height: 18px; }
+
+/* Painel visível: texto de um lado, maqueta ilustrativa do outro */
+.servicos-painel { padding: 32px 24px; }
+
+.painel-servico {
+  display: none;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+.painel-servico.is-ativo { display: grid; animation: painel-aparece .4s ease; }
+
+@keyframes painel-aparece {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.painel-servico__contagem {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-family: var(--fonte-mono);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: var(--suave);
+}
+
+.painel-servico__texto h3 { margin-bottom: 10px; }
+.painel-servico__texto > p { color: var(--cinza); font-size: .97rem; }
 
 .servico__lista {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--linha);
   display: grid;
-  gap: 8px;
+  gap: 10px;
+  margin: 18px 0 26px;
 }
 .servico__lista li {
   position: relative;
   padding-left: 20px;
-  font-size: .9rem;
+  font-size: .92rem;
   color: var(--cinza);
 }
+.servico__lista li strong { color: var(--tinta); }
 .servico__lista li::before {
   content: '';
   position: absolute;
   left: 0; top: .62em;
   width: 7px; height: 7px;
   border-radius: 2px;
-  background: var(--verde-luz);
+  background: var(--lima);
 }
 
+/* Maqueta ilustrativa — uma pequena janela de "browser" com linhas
+   a sugerir conteúdo, para dar vida ao painel sem usar fotos de stock. */
+.painel-servico__visual { position: relative; display: none; }
 
-/* ===== 07. PROCESSO ====================================== */
-.grelha-processo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; counter-reset: passo; }
-
-.passo {
-  position: relative;
-  padding: 26px 24px;
-  background: var(--branco);
+.maqueta {
+  background: var(--nevoa);
   border: 1px solid var(--linha);
   border-radius: var(--raio);
+  overflow: hidden;
+  box-shadow: var(--sombra-alta);
 }
-.passo__numero {
+.maqueta__barra { display: flex; gap: 6px; padding: 12px 14px; background: var(--branco); border-bottom: 1px solid var(--linha); }
+.maqueta__barra span { width: 8px; height: 8px; border-radius: 50%; background: var(--linha); }
+
+.maqueta__corpo { padding: 32px 28px 36px; display: grid; justify-items: center; gap: 10px; }
+
+.maqueta__icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  background: var(--menta);
+  color: var(--verde-escuro);
+  margin-bottom: 8px;
+}
+.maqueta__icone svg { width: 28px; height: 28px; }
+
+.maqueta__linha { display: block; height: 9px; width: 70%; border-radius: 5px; background: var(--linha); }
+.maqueta__linha--larga { width: 85%; }
+.maqueta__linha--curta { width: 50%; }
+
+.maqueta__cracha {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px; height: 38px;
+  border-radius: 12px;
+  font-size: 1rem;
+  box-shadow: var(--sombra-alta);
+}
+.maqueta__cracha--1 { top: -12px; right: 18px; background: var(--verde); color: var(--lima); }
+.maqueta__cracha--2 { bottom: 10px; left: -14px; background: var(--branco); color: var(--suave); border: 1px solid var(--linha); }
+
+
+/* ===== 07. PROCESSO (CAMINHO) =============================
+   Um percurso vertical, do primeiro contacto ao site no ar.
+   A linha entre os passos fica verde à medida que avança no ecrã.
+   ========================================================= */
+.caminho { max-width: 720px; margin: 0 auto; }
+
+/* Linha em zigue-zague: só aparece na disposição horizontal (PC) */
+.caminho__linha { display: none; }
+
+.caminho__passo {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  padding-bottom: 36px;
+}
+.caminho__passo:last-child { padding-bottom: 0; }
+
+.caminho__passo:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  bottom: 0;
+  width: 2px;
+  background: var(--linha);
+  transition: background-color .6s ease .1s;
+}
+.caminho__passo.e-visivel:not(:last-child)::before { background: var(--verde); }
+
+.caminho__marca {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--branco);
+  border: 2px solid var(--linha);
+  font-family: var(--fonte-mono);
+  font-weight: 700;
+  font-size: .85rem;
+  color: var(--cinza);
+  transition: background-color .4s, border-color .4s, color .4s;
+}
+.caminho__passo.e-visivel .caminho__marca { background: var(--verde); border-color: var(--verde); color: var(--branco); }
+
+.caminho__conteudo { padding-top: 2px; }
+.caminho__fase {
   display: block;
   font-family: var(--fonte-mono);
-  font-size: .8rem;
+  font-size: .76rem;
   font-weight: 600;
-  letter-spacing: .14em;
-  color: var(--verde);
-  margin-bottom: 14px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  margin-bottom: 6px;
 }
-.passo p { color: var(--cinza); font-size: .95rem; }
+.caminho__conteudo h3 { margin-bottom: 6px; }
+.caminho__conteudo p { color: var(--cinza); font-size: .95rem; margin: 0; }
+
+/* Brilho em cadeia: ao entrar no ecrã, o destaque "salta" do passo 1 ao 4 */
+@keyframes brilho-marca {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(167, 230, 58, 0); }
+  45% { box-shadow: 0 0 0 7px rgba(167, 230, 58, .22), 0 0 16px 3px rgba(167, 230, 58, .55); border-color: var(--lima); transform: scale(1.1); }
+}
+.caminho--relevo .caminho__passo:nth-of-type(1) .caminho__marca { animation: brilho-marca .9s ease-out .15s both; }
+.caminho--relevo .caminho__passo:nth-of-type(2) .caminho__marca { animation: brilho-marca .9s ease-out .65s both; }
+.caminho--relevo .caminho__passo:nth-of-type(3) .caminho__marca { animation: brilho-marca .9s ease-out 1.15s both; }
+.caminho--relevo .caminho__passo:nth-of-type(4) .caminho__marca { animation: brilho-marca .9s ease-out 1.65s both; }
 
 
 /* ===== 08. PORQUÊ A DD DIGITAL =========================== */
@@ -585,10 +776,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 .numeros {
   align-self: start;
   padding: 32px 28px;
-  background: var(--tinta);
+  background: var(--verde);
   color: var(--branco);
   border-radius: var(--raio);
-  background-image: radial-gradient(420px 220px at 90% 0%, rgba(63, 217, 160, .22), transparent 65%);
+  background-image: radial-gradient(420px 220px at 90% 0%, rgba(167, 230, 58, .22), transparent 65%);
 }
 .numeros h3 { color: var(--branco); margin-bottom: 22px; }
 .numeros__lista { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
@@ -599,7 +790,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-family: var(--fonte-titulo);
   font-size: 2.1rem;
   font-weight: 700;
-  color: var(--verde-luz);
+  color: var(--lima);
   line-height: 1;
   margin-bottom: 6px;
 }
@@ -618,7 +809,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: var(--raio-pequeno);
   transition: border-color .2s;
 }
-.faq details[open] { border-color: rgba(10, 143, 95, .4); }
+.faq details[open] { border-color: rgba(15, 45, 36, .4); }
 
 .faq summary {
   display: flex;
@@ -687,7 +878,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .campo select:focus,
 .campo textarea:focus {
   border-color: var(--verde);
-  box-shadow: 0 0 0 3px rgba(10, 143, 95, .14);
+  box-shadow: 0 0 0 3px rgba(15, 45, 36, .14);
   outline: none;
 }
 .campo input::placeholder, .campo textarea::placeholder { color: #9AA8A2; }
@@ -742,7 +933,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .direto:hover {
   color: var(--tinta);
-  border-color: rgba(10, 143, 95, .45);
+  border-color: rgba(15, 45, 36, .45);
   transform: translateY(-2px);
   box-shadow: var(--sombra-alta);
 }
@@ -772,7 +963,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* ===== 11. RODAPÉ ======================================== */
 .rodape {
-  background: var(--tinta);
+  background: var(--verde);
   color: rgba(255, 255, 255, .72);
   padding: 58px 0 28px;
   font-size: .94rem;
@@ -781,6 +972,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .rodape .logo { color: var(--branco); margin-bottom: 14px; }
 .rodape .logo:hover { color: var(--branco); }
+.rodape .logo .logo__destaque { color: var(--branco); }
 .rodape__sobre p { max-width: 42ch; color: rgba(255, 255, 255, .68); }
 
 .rodape h4 {
@@ -793,12 +985,12 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .rodape__lista { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
 .rodape__lista a { color: rgba(255, 255, 255, .78); text-decoration: none; }
-.rodape__lista a:hover { color: var(--verde-luz); }
+.rodape__lista a:hover { color: var(--lima); }
 
-.rodape .idiomas { background: transparent; border-color: rgba(255, 255, 255, .18); }
+.rodape .idiomas { background: rgba(255, 255, 255, .1); }
 .rodape .idiomas a { color: rgba(255, 255, 255, .6); }
 .rodape .idiomas a:hover { color: var(--branco); }
-.rodape .idiomas a[aria-current="true"] { background: var(--branco); color: var(--tinta); }
+.rodape .idiomas a[aria-current="true"] { background: var(--lima); color: var(--verde); }
 
 .rodape__fim {
   display: flex;
@@ -813,7 +1005,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* Crédito DD Digital */
 .credito { margin: 0; color: rgba(255, 255, 255, .55); }
-.credito a { color: var(--verde-luz); text-decoration: none; }
+.credito a { color: var(--lima); text-decoration: none; }
 .credito a:hover { text-decoration: underline; }
 
 
@@ -830,7 +1022,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   left: 0; top: .62em;
   width: 7px; height: 7px;
   border-radius: 2px;
-  background: var(--verde-luz);
+  background: var(--lima);
 }
 .texto-legal p { color: var(--cinza); }
 .data-revisao { font-family: var(--fonte-mono); font-size: .82rem; color: var(--cinza); }
@@ -877,8 +1069,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 640px) {
   :root { --espaco-seccao: 104px; }
   .wrap { padding: 0 28px; }
-  .grelha-servicos { grid-template-columns: repeat(2, 1fr); }
-  .grelha-processo { grid-template-columns: repeat(2, 1fr); }
   .provas { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .provas li { flex-direction: column; gap: 8px; }
   .diretos { grid-template-columns: repeat(2, 1fr); }
@@ -900,12 +1090,53 @@ ul { margin: 0; padding: 0; list-style: none; }
   .hero { padding: 86px 0 104px; }
   .hero__interior { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: 64px; }
 
-  .grelha-servicos { grid-template-columns: repeat(3, 1fr); }
-  .grelha-processo { grid-template-columns: repeat(4, 1fr); }
-  .servico { padding: 32px 28px; }
+  .servicos-abas { padding: 16px 20px; }
+  .servicos-painel { padding: 44px 40px; }
+  .painel-servico { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; }
+  .painel-servico__visual { display: block; }
 
   .porque { grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: start; }
   .razoes { gap: 30px; }
+
+  /* Caminho na horizontal, em zigue-zague, para poupar espaço vertical */
+  .caminho {
+    position: relative;
+    max-width: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .caminho__linha {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 92px;
+  }
+  .caminho__linha polyline {
+    fill: none;
+    stroke: var(--linha);
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+  }
+  .caminho__passo {
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0 14px;
+    padding-bottom: 0;
+    text-align: center;
+  }
+  .caminho__passo::before { display: none; }
+  .caminho__marca { margin: 0 auto 18px; }
+  .caminho__passo:nth-of-type(odd) .caminho__marca { margin-top: 0; }
+  .caminho__passo:nth-of-type(even) .caminho__marca { margin-top: 52px; }
+  .caminho__passo:nth-of-type(2) { transition-delay: .1s; }
+  .caminho__passo:nth-of-type(3) { transition-delay: .2s; }
+  .caminho__passo:nth-of-type(4) { transition-delay: .3s; }
 
   .contacto { grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: start; }
   .diretos { grid-template-columns: 1fr; }

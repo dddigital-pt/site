@@ -170,6 +170,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 .cabecalho-seccao { max-width: 680px; margin-bottom: 44px; }
 .cabecalho-seccao p { color: var(--cinza); font-size: 1.05rem; margin-bottom: 0; }
 
+/* "Como trabalhamos": o título é longo, por isso esta secção tem o cabeçalho
+   mais largo e o título fica numa só linha a partir de tablet. */
+#processo .cabecalho-seccao { max-width: 960px; }
+#processo .cabecalho-seccao p { max-width: 680px; }
+@media (min-width: 700px) {
+  #processo .cabecalho-seccao h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); white-space: nowrap; }
+}
+
 /* --- Botões --- */
 .btn {
   display: inline-flex;
@@ -420,120 +428,40 @@ ul { margin: 0; padding: 0; list-style: none; }
   }
 }
 
-/* --- Painel gráfico: PC e telemóvel desenhados em CSS, mostrando
-   um site (no portátil) e um biolink (no telemóvel) --- */
-.dispositivos {
+/* --- Imagem do hero: dispositivos com as bordas desvanecidas (feather)
+   para se fundirem com o fundo, e um movimento parallax suave ao fazer
+   scroll (o JavaScript só atualiza as variáveis --px-y, --px-rx, --px-ry
+   e --px-s; o resto é CSS). --- */
+.hero__visual { position: relative; }
+
+.hero__imagem {
   position: relative;
-  padding: 6px 14px 46px 6px;
-}
-
-/* Portátil: moldura escura + ecrã com uma janela de browser dentro */
-.portatil {
-  background: var(--tinta);
-  border-radius: 16px 16px 5px 5px;
-  padding: 10px 10px 16px;
-  box-shadow: var(--sombra-alta);
-}
-.portatil__base {
-  width: 64%;
-  height: 10px;
+  max-width: 560px;
   margin: 0 auto;
-  background: linear-gradient(var(--suave), var(--tinta));
-  border-radius: 0 0 8px 8px;
+  /* Desvanece as 4 bordas: máscara horizontal x máscara vertical */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
+  mask-composite: intersect;
+  /* Parallax: pequena inclinação 3D + deslocação vertical, tudo muito subtil */
+  transform:
+    perspective(1100px)
+    translate3d(0, var(--px-y, 0px), 0)
+    rotateX(var(--px-rx, 0deg))
+    rotateY(var(--px-ry, 0deg))
+    scale(var(--px-s, 1));
+  transform-origin: 50% 60%;
+  will-change: transform;
 }
-
-/* Telemóvel sobreposto ao canto do portátil, com um biolink dentro */
-.telemovel {
-  position: absolute;
-  right: -2%;
-  bottom: -6%;
-  width: 38%;
-  max-width: 168px;
-  z-index: 2;
-  background: var(--tinta);
-  border-radius: 28px;
-  padding: 10px 9px;
-  box-shadow: var(--sombra-alta);
+.hero__imagem img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
-.telemovel__notch {
-  width: 32%;
-  height: 5px;
-  margin: 0 auto 10px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, .18);
-}
-.telemovel__ecra {
-  background: var(--branco);
-  border-radius: 18px;
-  padding: 18px 12px 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.telemovel__avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-  background: linear-gradient(135deg, var(--verde), var(--lima));
-}
-.telemovel__nome { width: 58%; height: 8px; border-radius: 4px; background: var(--tinta); opacity: .85; margin-bottom: 16px; }
-.telemovel__links { width: 100%; display: grid; gap: 8px; }
-.telemovel__link { height: 24px; border-radius: 100px; background: var(--nevoa); border: 1px solid var(--linha); }
-.telemovel__link--ativo { background: var(--menta); border-color: transparent; }
-
-.janela {
-  background: var(--branco);
-  border: 1px solid var(--linha);
-  border-radius: var(--raio-pequeno);
-  overflow: hidden;
-}
-.janela__barra {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 14px;
-  background: var(--nevoa);
-  border-bottom: 1px solid var(--linha);
-}
-.janela__ponto { width: 10px; height: 10px; border-radius: 50%; background: var(--linha); }
-.janela__url {
-  flex: 1;
-  margin-left: 6px;
-  padding: 5px 12px;
-  background: var(--branco);
-  border: 1px solid var(--linha);
-  border-radius: 100px;
-  font-family: var(--fonte-mono);
-  font-size: .72rem;
-  color: var(--cinza);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.janela__ecra { padding: 22px; }
-
-/* Conteúdo abstrato dentro da janela */
-.esboco { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
-.esboco__topo { display: flex; align-items: center; justify-content: space-between; }
-.esboco__marca { width: 70px; height: 10px; border-radius: 4px; background: var(--tinta); }
-.esboco__menu { display: flex; gap: 6px; }
-.esboco__menu span { width: 26px; height: 7px; border-radius: 4px; background: var(--linha); }
-
-.esboco__hero {
-  display: grid;
-  gap: 10px;
-  padding: 20px;
-  border-radius: var(--raio-pequeno);
-  background: linear-gradient(135deg, rgba(15, 45, 36, .10), rgba(167, 230, 58, .14));
-}
-.esboco__titulo { height: 14px; width: 78%; border-radius: 5px; background: var(--tinta); }
-.esboco__linha { height: 8px; border-radius: 4px; background: rgba(46, 46, 46, .14); }
-.esboco__linha--curta { width: 52%; }
-.esboco__btn { width: 104px; height: 30px; border-radius: 8px; background: var(--verde); margin-top: 6px; }
-
-.esboco__cartoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.esboco__cartao { height: 54px; border: 1px solid var(--linha); border-radius: 8px; background: var(--branco); }
 
 /* ===== 06. SERVIÇOS ====================================== */
 
@@ -632,6 +560,47 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: 2px;
   background: var(--lima);
 }
+
+/* Sub-separadores: dentro de Sites, Redes Sociais e Manutenção, cada
+   subserviço tem o seu botão e a sua explicação. */
+.sub-abas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0 6px;
+  padding-top: 20px;
+  border-top: 1px solid var(--linha);
+}
+.sub-aba {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  background: var(--branco);
+  color: var(--cinza);
+  font-family: var(--fonte-texto);
+  font-size: .84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.sub-aba:hover { border-color: var(--suave); color: var(--verde); }
+.sub-aba.is-ativo { background: var(--menta); border-color: var(--verde); color: var(--verde); }
+
+.sub-painel { display: none; padding-top: 14px; }
+.sub-painel.is-ativo { display: block; animation: painel-aparece .35s ease; }
+.sub-nota {
+  margin-top: 22px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--lima);
+  border-radius: 0 var(--raio-pequeno) var(--raio-pequeno) 0;
+  background: var(--nevoa);
+  color: var(--cinza);
+  font-size: .9rem;
+}
+.sub-nota strong { color: var(--tinta); }
+.sub-painel h4 { margin-bottom: 8px; font-size: 1.05rem; color: var(--tinta); }
+.sub-painel p { color: var(--cinza); font-size: .95rem; }
 
 /* Maqueta ilustrativa — uma pequena janela de "browser" com linhas
    a sugerir conteúdo, para dar vida ao painel sem usar fotos de stock. */

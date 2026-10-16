@@ -10,7 +10,9 @@
    4. Anima os blocos ao aparecerem no ecrã (respeita "reduzir movimento")
    5. Valida e envia o formulário de contacto (Web3Forms) por JavaScript,
       para o visitante não saltar para outra página
-   6. Separadores (abas) da secção de Serviços
+   6. Separadores (abas) da secção de Serviços, e sub-separadores
+      dentro de Sites, Redes Sociais e Manutenção
+   7. Parallax suave na imagem do hero
    ========================================================= */
 (function () {
   'use strict';
@@ -82,6 +84,69 @@
     observadorCaminho.observe(caminho);
   }
 
+  /* ---- 7. Parallax suave na imagem do hero ----
+     Ao fazer scroll, a imagem desloca-se mais devagar que a página e inclina
+     ligeiramente em 3D, dando a sensação de flutuar. Os valores são pequenos
+     de propósito. Não corre se a pessoa preferir menos movimento. */
+  var imagemHero = document.querySelector('[data-parallax]');
+  var hero = document.getElementById('inicio');
+
+  if (imagemHero && hero && !preferenceReduzida) {
+    var aEsperarFrame = false;
+
+    function atualizaParallax() {
+      aEsperarFrame = false;
+      // progresso: 0 no topo da página, 1 quando o hero já saiu do ecrã
+      var progresso = Math.min(Math.max(window.scrollY / hero.offsetHeight, 0), 1);
+      imagemHero.style.setProperty('--px-y', (progresso * 46).toFixed(1) + 'px');
+      imagemHero.style.setProperty('--px-rx', (2 + progresso * 5).toFixed(2) + 'deg');
+      imagemHero.style.setProperty('--px-ry', (-4 + progresso * 8).toFixed(2) + 'deg');
+      imagemHero.style.setProperty('--px-s', (1 + progresso * 0.04).toFixed(3));
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!aEsperarFrame) {
+        aEsperarFrame = true;
+        window.requestAnimationFrame(atualizaParallax);
+      }
+    }, { passive: true });
+
+    atualizaParallax();
+  }
+
+  /* ---- 6b. Sub-separadores dentro de cada serviço (Sites, Redes Sociais, Manutenção) ---- */
+  document.querySelectorAll('.sub-abas').forEach(function (grupo) {
+    var botoes = grupo.querySelectorAll('.sub-aba');
+
+    function mudaSubAba(nova) {
+      botoes.forEach(function (botao) {
+        var painel = document.getElementById(botao.getAttribute('aria-controls'));
+        var ativa = botao === nova;
+        botao.classList.toggle('is-ativo', ativa);
+        botao.setAttribute('aria-selected', ativa ? 'true' : 'false');
+        botao.setAttribute('tabindex', ativa ? '0' : '-1');
+        if (painel) {
+          painel.classList.toggle('is-ativo', ativa);
+          painel.hidden = !ativa;
+        }
+      });
+    }
+
+    botoes.forEach(function (botao, indice) {
+      botao.addEventListener('click', function () { mudaSubAba(botao); });
+      botao.addEventListener('keydown', function (evento) {
+        var proximo = null;
+        if (evento.key === 'ArrowRight') { proximo = (indice + 1) % botoes.length; }
+        if (evento.key === 'ArrowLeft') { proximo = (indice - 1 + botoes.length) % botoes.length; }
+        if (proximo !== null) {
+          evento.preventDefault();
+          botoes[proximo].focus();
+          mudaSubAba(botoes[proximo]);
+        }
+      });
+    });
+  });
+
   /* ---- 6. Separadores (abas) da secção de Serviços ---- */
   var abas = document.querySelectorAll('.aba-botao');
   var dashboard = document.querySelector('.servicos-dashboard');
@@ -136,8 +201,8 @@
     : {
         aEnviar: 'A enviar…',
         sucesso: 'Mensagem enviada! Vamos responder no próximo dia útil.',
-        erro: 'Não foi possível enviar. Tente novamente ou contacte-nos diretamente por email ou Instagram.',
-        chaveFalta: 'O formulário ainda não está configurado. Use os contactos diretos abaixo, por favor.'
+        erro: 'Não foi possível enviar. Tenta novamente ou contacta-nos diretamente por email ou Instagram.',
+        chaveFalta: 'O formulário ainda não está configurado. Usa os contactos diretos abaixo, por favor.'
       };
 
   function mostraAviso(texto, tipo) {

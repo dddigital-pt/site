@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Só entram páginas que queremos no Google. As páginas de privacidade têm "noindex", por isso ficam de fora. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
@@ -6,6 +7,7 @@
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://dddigital.pt/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://dddigital.pt/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dddigital.pt/"/>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,23 +16,8 @@
     <xhtml:link rel="alternate" hreflang="pt-PT" href="https://dddigital.pt/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://dddigital.pt/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dddigital.pt/"/>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://dddigital.pt/privacidade.html</loc>
-    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://dddigital.pt/privacidade.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://dddigital.pt/en/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://dddigital.pt/privacidade.html"/>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://dddigital.pt/en/privacy.html</loc>
-    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://dddigital.pt/privacidade.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://dddigital.pt/en/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://dddigital.pt/privacidade.html"/>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
   </url>
 </urlset>

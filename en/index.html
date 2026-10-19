@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DD Digital — Websites and digital solutions for local businesses</title>
-<meta name="description" content="We create websites, biolinks and digital menus, and manage social media, with solutions tailored to your business. Request your free quote.">
+<title>Website Design &amp; Social Media Management | DD Digital</title>
+<meta name="description" content="Website creation, biolinks, digital menus and social media management for businesses in Portugal. Tailored solutions. Request your free quote.">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://dddigital.pt/en/">
 
 <!-- Available languages, so Google knows this page has a Portuguese version -->
@@ -19,18 +20,22 @@
 <!-- Social sharing (Open Graph + Twitter) -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="pt_PT">
 <meta property="og:site_name" content="DD Digital">
-<meta property="og:title" content="DD Digital — Websites and digital solutions for local businesses">
-<meta property="og:description" content="Websites, biolinks, digital menus and social media management, tailored to your business.">
+<meta property="og:title" content="Website Design &amp; Social Media Management | DD Digital">
+<meta property="og:description" content="Websites, biolinks, digital menus and social media management, tailored to your business. Request your free quote.">
 <meta property="og:url" content="https://dddigital.pt/en/">
-<meta property="og:image" content="https://dddigital.pt/img/og-image.webp">
+<meta property="og:image" content="https://dddigital.pt/img/og-image.png">
+<meta property="og:image:alt" content="DD Digital — websites, biolinks and digital solutions for businesses">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="DD Digital — Websites and digital solutions">
-<meta name="twitter:description" content="Websites, biolinks, digital menus and social media for your business.">
-<meta name="twitter:image" content="https://dddigital.pt/img/og-image.webp">
+<meta name="twitter:title" content="Website Design &amp; Social Media | DD Digital">
+<meta name="twitter:description" content="Websites, biolinks, digital menus and social media management for your business in Portugal.">
+<meta name="twitter:image" content="https://dddigital.pt/img/og-image.png">
+<meta name="twitter:image:alt" content="DD Digital — websites, biolinks and digital solutions for businesses">
 
+<link rel="preload" href="../fonts/montserrat-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../css/style.css">
 
 <!-- Structured data: helps Google surface DD Digital in local searches -->
@@ -38,14 +43,42 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": "https://dddigital.pt/#negocio",
   "name": "DD Digital",
-  "url": "https://dddigital.pt/en/",
-  "image": "https://dddigital.pt/img/og-image.webp",
-  "description": "Website creation, biolinks, digital menus and guides, and social media management for local businesses.",
-  "areaServed": ["Portugal"],
-  "priceRange": "€€",
+  "url": "https://dddigital.pt/",
+  "logo": "https://dddigital.pt/img/logo.webp",
+  "image": "https://dddigital.pt/img/og-image.png",
+  "description": "Website creation, landing pages, biolinks, digital menus and guides, and social media management for local businesses in Portugal, with remote service also available to international clients.",
+  "areaServed": [{ "@type": "Country", "name": "Portugal" }],
+  "knowsLanguage": ["pt-PT", "en"],
   "email": "dddigital.pt@gmail.com",
-  "sameAs": ["https://www.instagram.com/dddigital.pt"]
+  "sameAs": ["https://www.instagram.com/dddigital.pt"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "DD Digital services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Business websites (landing page, one-page, premium and pro)" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Custom biolinks" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Digital menus and guides" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Social media management" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Website maintenance" }
+      }
+    ]
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -61,7 +94,12 @@
     {
       "@type": "Question",
       "name": "Do I need to pay a monthly fee?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. The project is a one-time payment, with no mandatory monthly fees. Recurring costs only apply if you choose ongoing maintenance, content updates, or your own domain name." }
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The project is a one-time payment, with no mandatory monthly fees, and we offer the first year of maintenance. Recurring costs only apply if you choose to continue with maintenance after that period, sign up for social media management, or get your own domain name." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a website cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The price depends on the type of project and on what you need, so we don't work with fixed prices. Request a free quote, tell us what you have in mind and we'll present you with the terms of the service." }
     },
     {
       "@type": "Question",
@@ -130,9 +168,9 @@
   <section class="hero" id="inicio">
     <div class="wrap hero__interior">
       <div class="surge">
-        <h1>Digital solutions designed for your business.</h1>
+        <h1>Websites and digital solutions designed for your business.</h1>
         <p class="hero__texto">
-          We create websites, biolinks, digital menus and guides, and help brands manage their social media presence. Every project starts from your needs, your goals and the identity of your business.
+          We create websites, biolinks, digital menus and guides tailored to your business. We also help you manage your brand's presence on social media, with solutions designed around your needs and goals.
         </p>
         <div class="hero__accoes">
           <a href="#contact" class="btn btn--principal">
@@ -159,16 +197,16 @@
   <div class="faixa-provas">
     <ul class="provas wrap">
       <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-        <span><strong>Designed for each project</strong><br>Solutions are defined according to the needs and goals of each business.</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        <span><strong>Tailored to each project</strong><br>We define the solution based on the needs, goals and characteristics of your business.</span>
       </li>
       <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>
-        <span><strong>Ready for every screen</strong><br>The user experience is designed for computers, tablets and phones, depending on the solution.</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6M9 14v4"/><rect x="18" y="9" width="4" height="9" rx="1"/></svg>
+        <span><strong>Designed for every screen</strong><br>For websites, we design the layout and navigation to work across different screen sizes.</span>
       </li>
       <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>
-        <span><strong>Straightforward communication</strong><br>We explain the options, the process and what is included in each project.</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5"/><path d="M9 14l2 2 4-4"/></svg>
+        <span><strong>Clear terms</strong><br>We explain the available options, what's included and the terms of each project.</span>
       </li>
     </ul>
   </div>
@@ -178,8 +216,8 @@
     <div class="wrap">
       <div class="cabecalho-seccao surge">
         <span class="etiqueta">Services</span>
-        <h2>What we can create for your business</h2>
-        <p>Every business has different needs. We develop websites and digital solutions to present your services, organise information, make it easy to get in touch and communicate with your customers.</p>
+        <h2>Websites, biolinks and digital solutions for your business</h2>
+        <p>Every business has different needs. We create digital solutions to present your business, provide useful information and make your services more accessible to your customers.</p>
       </div>
 
       <div class="servicos-dashboard surge">
@@ -222,7 +260,7 @@
           <div class="painel-servico is-ativo" id="painel-sites" role="tabpanel" aria-labelledby="aba-sites" tabindex="0">
             <div class="painel-servico__texto">
               <h3>Business websites</h3>
-              <p>From a landing page to a more complete website — the right structure for your business goal.</p>
+              <p>Solutions for different needs, from pages focused on a single goal to multi-section websites.</p>
               <!-- Sub-separadores: cada subserviço tem a sua explicação -->
               <div class="sub-abas" role="tablist" aria-label="Website types">
                 <button class="sub-aba is-ativo" type="button" role="tab" id="sub-sites-landing" aria-controls="subpainel-sites-landing" aria-selected="true">Landing Page</button>
@@ -232,11 +270,11 @@
               </div>
               <div class="sub-painel is-ativo" id="subpainel-sites-landing" role="tabpanel" aria-labelledby="sub-sites-landing" tabindex="0">
                 <h4>Landing Page</h4>
-                <p>Present a service, promote a campaign or receive contact requests through a page structured around one specific goal.</p>
+                <p>A page built to present a service, promote a campaign or capture contact requests, with content organised around your business goal.</p>
                 <ul class="servico__lista">
-                  <li>Structure focused on the goal</li>
+                  <li>Content organised around the goal of the page</li>
                   <li>Responsive design</li>
-                  <li>Calls to action and form, depending on the project</li>
+                  <li>Calls to action and contact form, where applicable</li>
                 </ul>
                 <a href="#contact" class="btn btn--principal">
                   Get a free quote
@@ -245,12 +283,12 @@
               </div>
               <div class="sub-painel" id="subpainel-sites-onepage" role="tabpanel" aria-labelledby="sub-sites-onepage" tabindex="0" hidden>
                 <h4>One-Page</h4>
-                <p>Your whole business on one page. Brings together your company presentation, services, contacts and other information on a page organised into sections.</p>
+                <p>Presents your business, services, contact details and other key information on a single page, organised into sections.</p>
                 <ul class="servico__lista">
-                  <li>Sections tailored to the business</li>
-                  <li>Simple navigation</li>
-                  <li>Ideal for businesses with few services</li>
-                  <li>Structure organised for SEO</li>
+                  <li>Content organised into sections</li>
+                  <li>Simple navigation between sections</li>
+                  <li>Suited to businesses whose information fits on a single page</li>
+                  <li>Content structured to make it easier for search engines to read</li>
                 </ul>
                 <a href="#contact" class="btn btn--principal">
                   Get a free quote
@@ -259,11 +297,11 @@
               </div>
               <div class="sub-painel" id="subpainel-sites-premium" role="tabpanel" aria-labelledby="sub-sites-premium" tabindex="0" hidden>
                 <h4>Website Premium</h4>
-                <p>Organises the different services and areas of your business on dedicated pages, with a structure adapted to your content.</p>
+                <p>A multi-page website to present your company, your services and other relevant information, in an organised way and adapted to your business.</p>
                 <ul class="servico__lista">
-                  <li>Dedicated pages for each topic</li>
-                  <li>Structure ready for content to grow</li>
-                  <li>Consistent header, navigation and footer on every page</li>
+                  <li>Up to 3 pages dedicated to your business content</li>
+                  <li>Content structure organised page by page</li>
+                  <li>Consistent navigation between pages</li>
                 </ul>
                 <a href="#contact" class="btn btn--principal">
                   Get a free quote
@@ -272,11 +310,11 @@
               </div>
               <div class="sub-painel" id="subpainel-sites-pro" role="tabpanel" aria-labelledby="sub-sites-pro" tabindex="0" hidden>
                 <h4>Website Pro</h4>
-                <p>Our most complete solution, for projects that need custom features, defined with you from the start.</p>
+                <p>A website with more pages, for businesses that need to present different services, areas or content in greater detail.</p>
                 <ul class="servico__lista">
-                  <li>Features tailored to the project</li>
-                  <li>Structure planned together with you</li>
-                  <li>Closer follow-up</li>
+                  <li>Up to 6 pages dedicated to your business content</li>
+                  <li>Content organised according to the needs of the project</li>
+                  <li>Consistent navigation between pages</li>
                 </ul>
                 <a href="#contact" class="btn btn--principal">
                   Get a free quote
@@ -305,11 +343,11 @@
           <div class="painel-servico" id="painel-biolinks" role="tabpanel" aria-labelledby="aba-biolinks" tabindex="0" hidden>
             <div class="painel-servico__texto">
               <h3>Biolinks</h3>
-              <p>Your link-in-bio page for Instagram and other social networks, with your own look — never a generic template, always a look matched to your brand.</p>
+              <p>A page with links to your channels, services, contact details and other relevant content, customised to match your brand identity.</p>
               <ul class="servico__lista">
-                <li>All your links in one place</li>
-                <li>Design matched to your brand</li>
-                <li>Option of your own domain or a DD Digital address</li>
+                <li>Multiple links organised on a single page</li>
+                <li>Customisation that fits your brand</li>
+                <li>Option to use your own domain or a DD Digital address, depending on the option chosen</li>
               </ul>
               <a href="#contact" class="btn btn--principal">
                 Get a free quote
@@ -336,8 +374,8 @@
           <!-- DIGITAL SOLUTIONS -->
           <div class="painel-servico" id="painel-solucoes" role="tabpanel" aria-labelledby="aba-solucoes" tabindex="0" hidden>
             <div class="painel-servico__texto">
-              <h3>Digital Solutions</h3>
-              <p>Digital tools built to fit your business — always up to date, with no reprinting needed.</p>
+              <h3>Digital solutions</h3>
+              <p>Offer digital menus and guides to your customers, with information organised and accessible online.</p>
               <!-- Sub-separadores: cada subserviço tem a sua explicação -->
               <div class="sub-abas" role="tablist" aria-label="Types of digital solution">
                 <button class="sub-aba is-ativo" type="button" role="tab" id="sub-solucoes-ementas" aria-controls="subpainel-solucoes-ementas" aria-selected="true">Menus</button>
@@ -345,11 +383,12 @@
               </div>
               <div class="sub-painel is-ativo" id="subpainel-solucoes-ementas" role="tabpanel" aria-labelledby="sub-solucoes-ementas" tabindex="0">
                 <h4>Menus</h4>
-                <p>Digital menus reached by QR code on the table, in the window or at the counter. Customers open the menu on their phone quickly and easily.</p>
+                <p>Make your establishment's menu available through a QR code. Customers can view the dishes and information you provide directly on their phone.</p>
                 <ul class="servico__lista">
-                  <li>QR code for the table or window</li>
-                  <li>Custom, modern and dynamic design</li>
-                  <li>Works on any phone</li>
+                  <li>Menu access through QR code or link</li>
+                  <li>Visual presentation adapted to the identity of the establishment</li>
+                  <li>Viewing on mobile devices</li>
+                  <li>Option to use your own domain or a DD Digital address, depending on the option chosen</li>
                 </ul>
                 <a href="#contact" class="btn btn--principal">
                   Get a free quote
@@ -358,40 +397,32 @@
               </div>
               <div class="sub-painel" id="subpainel-solucoes-guias" role="tabpanel" aria-labelledby="sub-solucoes-guias" tabindex="0" hidden>
                 <h4>Guides</h4>
-                <p>Digital guides for your customers or guests: useful information, rules, recommendations and contacts, always at hand and always up to date.</p>
+                <p>Digital guides to share with your customers or guests, with useful information, rules, recommendations and contacts in one place.</p>
                 <ul class="servico__lista">
-                  <li>All the information in one place</li>
-                  <li>Access by QR code or link</li>
-                  <li>Design aligned with your brand</li>
+                  <li>Information organised in one place</li>
+                  <li>Access through QR code or link</li>
+                  <li>Visual presentation aligned with the brand identity</li>
+                  <li>Option to use your own domain or a DD Digital address, depending on the option chosen</li>
                 </ul>
                 <a href="#contact" class="btn btn--principal">
                   Get a free quote
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </a>
               </div>
-              <p class="sub-nota"><strong>And much more.</strong> We don't stop here: we also create other custom digital solutions, tailored to your business. Talk to us!</p>
+              <p class="sub-nota"><strong>Need another digital solution?</strong> <br> If you have another idea in mind, tell us what you need. We can assess with you the possibility of developing a solution suited to your project.</p>
             </div>
-            <div class="painel-servico__visual" aria-hidden="true">
-              <div class="maqueta">
-                <div class="maqueta__barra"><span></span><span></span><span></span></div>
-                <div class="maqueta__corpo">
-                  <span class="maqueta__icone">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h1v1H8zM8 15h1v1H8zM15 8h1v1h-1zM12 8v1M8 12h1M15 12v4M12 15h4v4h-4z"/></svg>
-                  </span>
-                  <span class="maqueta__linha maqueta__linha--larga"></span>
-                  <span class="maqueta__linha"></span>
-                  <span class="maqueta__linha maqueta__linha--curta"></span>
-                </div>
-              </div>
-              <span class="maqueta__cracha maqueta__cracha--1">✓</span>
-              <span class="maqueta__cracha maqueta__cracha--2">★</span>
-            </div>
+            <!-- Service image. To swap it, replace the file in img/ keeping the same name: servico-ementas.webp -->
+            <figure class="painel-servico__visual painel-servico__visual--foto painel-servico__visual--vertical">
+              <img src="../img/servico-ementas.webp" srcset="../img/servico-ementas-560.webp 560w, ../img/servico-ementas.webp 1000w"
+                   sizes="(min-width: 900px) 380px, 340px" width="1000" height="1200"
+                   alt="Digital menu on a phone, with dishes organised by category, and a QR code to open the menu" loading="lazy" decoding="async">
+            </figure>
           </div>
 
           <!-- SOCIAL MEDIA -->
-          <div class="painel-servico" id="painel-redes" role="tabpanel" aria-labelledby="aba-redes" tabindex="0" hidden>
+          <div class="painel-servico painel-servico--foto-larga" id="painel-redes" role="tabpanel" aria-labelledby="aba-redes" tabindex="0" hidden>
             <div class="painel-servico__texto">
-              <h3>Social Media Management</h3>
+              <h3>Social media management</h3>
               <p>Content and management to keep your social media active, without doing it all yourself.</p>
               <!-- Sub-separadores: cada subserviço tem a sua explicação -->
               <div class="sub-abas" role="tablist" aria-label="Social media plans">
@@ -439,27 +470,18 @@
                 </a>
               </div>
             </div>
-            <div class="painel-servico__visual" aria-hidden="true">
-              <div class="maqueta">
-                <div class="maqueta__barra"><span></span><span></span><span></span></div>
-                <div class="maqueta__corpo">
-                  <span class="maqueta__icone">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4a1 1 0 001 1h2l7 4V5l-7 4H4a1 1 0 00-1 1z"/><path d="M19 8a5 5 0 010 8"/></svg>
-                  </span>
-                  <span class="maqueta__linha maqueta__linha--larga"></span>
-                  <span class="maqueta__linha"></span>
-                  <span class="maqueta__linha maqueta__linha--curta"></span>
-                </div>
-              </div>
-              <span class="maqueta__cracha maqueta__cracha--1">✓</span>
-              <span class="maqueta__cracha maqueta__cracha--2">★</span>
-            </div>
+            <!-- Service image. To swap it, replace the file in img/ keeping the same name: servico-redes-sociais.webp -->
+            <figure class="painel-servico__visual painel-servico__visual--foto">
+              <img src="../img/servico-redes-sociais.webp" srcset="../img/servico-redes-sociais-600.webp 600w, ../img/servico-redes-sociais.webp 1100w"
+                   sizes="(min-width: 900px) 560px, 92vw" width="1100" height="734"
+                   alt="Instagram profile on a phone and posts for Instagram, Facebook and LinkedIn" loading="lazy" decoding="async">
+            </figure>
           </div>
 
           <!-- MAINTENANCE -->
-          <div class="painel-servico" id="painel-manutencao" role="tabpanel" aria-labelledby="aba-manutencao" tabindex="0" hidden>
+          <div class="painel-servico painel-servico--foto-larga" id="painel-manutencao" role="tabpanel" aria-labelledby="aba-manutencao" tabindex="0" hidden>
             <div class="painel-servico__texto">
-              <h3>Maintenance</h3>
+              <h3>Website maintenance</h3>
               <p>Once the site is live, we stay close — updates, fixes and small improvements.</p>
               <!-- Sub-separadores: cada subserviço tem a sua explicação -->
               <div class="sub-abas" role="tablist" aria-label="Maintenance plans">
@@ -470,44 +492,37 @@
                 <h4>Half-yearly</h4>
                 <p>Site review and updates every six months, to keep everything up to date.</p>
                 <ul class="servico__lista">
-                  <li>General site review</li>
-                  <li>Updates and small fixes</li>
-                  <li>Two reviews per year</li>
+                  <li>Guarantee that the site works for 6 months</li>
+                  <li>Monthly backup</li>
+                  <li>Content changes and updates</li>
                 </ul>
                 <a href="#contact" class="btn btn--principal">
                   Get a free quote
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </a>
+                <p class="sub-nota"><strong>Note:</strong> Extensive and design-related changes, and the creation of new pages and sections, are not included. Available on request.</p>
               </div>
               <div class="sub-painel" id="subpainel-manutencao-anual" role="tabpanel" aria-labelledby="sub-manutencao-anual" tabindex="0" hidden>
                 <h4>Yearly</h4>
                 <p>Ongoing support and updates throughout the year, so your site is always in good hands.</p>
                 <ul class="servico__lista">
-                  <li>Support all year round</li>
-                  <li>Updates and fixes</li>
+                  <li>Guarantee that the site works for 1 year</li>
+                  <li>Monthly backup</li>
                   <li>Small improvements whenever they make sense</li>
                 </ul>
                 <a href="#contact" class="btn btn--principal">
                   Get a free quote
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </a>
+                <p class="sub-nota"><strong>Note:</strong> Extensive and design-related changes, and the creation of new pages and sections, are not included. Available on request.</p>
               </div>
             </div>
-            <div class="painel-servico__visual" aria-hidden="true">
-              <div class="maqueta">
-                <div class="maqueta__barra"><span></span><span></span><span></span></div>
-                <div class="maqueta__corpo">
-                  <span class="maqueta__icone">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 10-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg>
-                  </span>
-                  <span class="maqueta__linha maqueta__linha--larga"></span>
-                  <span class="maqueta__linha"></span>
-                  <span class="maqueta__linha maqueta__linha--curta"></span>
-                </div>
-              </div>
-              <span class="maqueta__cracha maqueta__cracha--1">✓</span>
-              <span class="maqueta__cracha maqueta__cracha--2">★</span>
-            </div>
+            <!-- Service image. To swap it, replace the file in img/ keeping the same name: servico-manutencao.webp -->
+            <figure class="painel-servico__visual painel-servico__visual--foto">
+              <img src="../img/servico-manutencao.webp" srcset="../img/servico-manutencao-640.webp 640w, ../img/servico-manutencao.webp 1200w"
+                   sizes="(min-width: 900px) 560px, 92vw" width="1200" height="600"
+                   alt="Laptop showing the website maintenance checklist: updates, fixes, backups and monitoring" loading="lazy" decoding="async">
+            </figure>
           </div>
         </div>
       </div>
@@ -519,8 +534,8 @@
     <div class="wrap">
       <div class="cabecalho-seccao surge">
         <span class="etiqueta">How we work</span>
-        <h2>From first contact to a live website</h2>
-        <p>A simple, transparent process, free of technical jargon — you always know what's happening and why.</p>
+        <h2>From first conversation to final solution</h2>
+        <p>A clear process to understand what you need, define the project and develop a solution suited to your business.</p>
       </div>
 
       <div class="caminho">
@@ -531,32 +546,32 @@
           <span class="caminho__marca">01</span>
           <div class="caminho__conteudo">
             <span class="caminho__fase">Conversation</span>
-            <h3>Understanding your business</h3>
-            <p>We talk about what you do, who your customers are, and what the website needs to achieve.</p>
+            <h3>Understanding what you need</h3>
+            <p>We talk about your business, your brand, your goals and what you want to develop.</p>
           </div>
         </div>
         <div class="caminho__passo surge">
           <span class="caminho__marca">02</span>
           <div class="caminho__conteudo">
-            <span class="caminho__fase">Visual direction</span>
-            <h3>A look that's yours alone</h3>
-            <p>We propose colours, typography and a style of your own — never the same template used elsewhere.</p>
+            <span class="caminho__fase">Planning</span>
+            <h3>Defining the solution</h3>
+            <p>We analyse the project's needs, define what will be developed and present the terms of the service.</p>
           </div>
         </div>
         <div class="caminho__passo surge">
           <span class="caminho__marca">03</span>
           <div class="caminho__conteudo">
-            <span class="caminho__fase">Build</span>
-            <h3>Watching it take shape</h3>
-            <p>We build the site, share progress with you, and refine it together until it's exactly right.</p>
+            <span class="caminho__fase">Development</span>
+            <h3>Shaping the project</h3>
+            <p>We develop the solution according to what was defined and work with you on the points that need your approval.</p>
           </div>
         </div>
         <div class="caminho__passo surge">
           <span class="caminho__marca">04</span>
           <div class="caminho__conteudo">
-            <span class="caminho__fase">Launch</span>
-            <h3>Live, with support</h3>
-            <p>We publish the site, show you how to edit the essentials, and stay available after launch.</p>
+            <span class="caminho__fase">Delivery</span>
+            <h3>Completing the delivery</h3>
+            <p>We complete the project and deliver the agreed solution, in line with the terms we have set.</p>
           </div>
         </div>
       </div>
@@ -575,57 +590,66 @@
         <div class="razoes">
           <div class="razao surge">
             <span class="razao__icone">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 11-14h-7l1-6z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>
             </span>
             <div>
-              <h3>Near-instant loading</h3>
-              <p>No heavy frameworks or bloated code. Just plain HTML, CSS and JavaScript, optimised down to the detail.</p>
+              <h3>Digital solutions with a clear purpose</h3>
+              <p>Every project starts by understanding what you need and ends with the delivery of the solution. In between, we define what makes sense to develop and how we will make it happen.</p>
             </div>
           </div>
           <div class="razao surge">
             <span class="razao__icone">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg>
             </span>
             <div>
-              <h3>Built to be found on Google</h3>
-              <p>Semantic structure, well-organised text and structured data from day one — the foundation of good SEO.</p>
+              <h3>Tailored to your needs</h3>
+              <p>We define the solution based on what you want, the content required and the features you are looking for.</p>
             </div>
           </div>
           <div class="razao surge">
             <span class="razao__icone">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
             </span>
             <div>
-              <h3>No generic templates</h3>
-              <p>Every site gets its own visual direction, designed for your business — never copied from another client.</p>
+              <h3>Less weight. More freedom.</h3>
+              <p>We build with HTML, CSS and JavaScript, avoiding unnecessary dependencies to create fast, efficient solutions tailored to your business.</p>
             </div>
           </div>
           <div class="razao surge">
             <span class="razao__icone">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9h8M8 13h5"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H8l-5 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg>
             </span>
             <div>
-              <h3>We speak plainly</h3>
-              <p>No technical jargon. We explain every decision in plain language and leave the code commented for you.</p>
+              <h3>Clear communication</h3>
+              <p>We explain what is planned for the project, what options are available and what is needed to move forward.</p>
+            </div>
+          </div>
+          <div class="razao surge">
+            <span class="razao__icone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5"/><path d="M9 14l2 2 4-4"/></svg>
+            </span>
+            <div>
+              <h3>Terms defined before we start</h3>
+              <p>We define what will be developed, what is included in the service and what terms have been agreed.</p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="numeros surge">
-        <h3>What this means in practice</h3>
+        <h3>Digital, without the complication</h3>
         <div class="numeros__lista">
           <div class="numeros__item">
-            <span class="numeros__valor">100%</span>
-            <p>responsive — phone, tablet and desktop, always tested on all three</p>
+            <span class="numeros__valor">Made to measure</span>
+            <p>Websites, biolinks, menus and digital guides tailored to the goal of the brand</p>
           </div>
           <div class="numeros__item">
-            <span class="numeros__valor">Custom</span>
-            <p>every site gets its own visual direction, never copied from another client</p>
+            <span class="numeros__valor">Several services</span>
+            <p>Different digital solutions and social media management</p>
           </div>
           <div class="numeros__item">
-            <span class="numeros__valor">1x</span>
-            <p>one-time project payment, with no mandatory monthly fees</p>
+            <span class="numeros__valor">Close support</span>
+            <p>We keep in direct contact with you throughout the project, from defining your needs to delivery.</p>
           </div>
         </div>
       </div>
@@ -642,34 +666,44 @@
       </div>
 
       <div class="faq surge">
-        <details>
-          <summary>How long does it take to build a website?</summary>
-          <div class="faq__resposta">A landing page or one-page site is typically ready within 1 to 2 weeks once we receive your final text and images. A multi-page site usually takes between 2 and 4 weeks.</div>
-        </details>
-        <details>
-          <summary>Do I need to pay a monthly fee?</summary>
-          <div class="faq__resposta">No. The project is a one-time payment, with no mandatory monthly fees. Recurring costs only apply if you choose ongoing maintenance, content updates, or your own domain name.</div>
-        </details>
-        <details>
-          <summary>I already have a domain, can you use it?</summary>
-          <div class="faq__resposta">Yes. We connect your existing domain to the new site. If you don't have one yet, we can help you choose and register one.</div>
-        </details>
-        <details>
-          <summary>Can I edit the site myself once it's live?</summary>
-          <div class="faq__resposta">Yes, for simple changes like text, photos, or opening hours. We deliver clearly commented code and explain, in plain language, where and how to edit it. For bigger changes, we're available.</div>
-        </details>
-        <details>
-          <summary>Will the site show up on Google?</summary>
-          <div class="faq__resposta">Every site we build is already optimised for search engines: semantic structure, fast loading, well-organised text and structured data. That's the foundation of good SEO. Ranking well for competitive searches may need ongoing content work, which we can also support.</div>
-        </details>
-        <details>
-          <summary>Do you build online stores?</summary>
-          <div class="faq__resposta">Our focus is institutional and presentation websites, without shopping carts or payment systems. If your business needs an online store, we're happy to discuss the right solution for you.</div>
-        </details>
-        <details>
-          <summary>How do we get started?</summary>
-          <div class="faq__resposta">Fill in the form or contact us by email or Instagram. We'll talk about your business, propose a visual direction and a timeline, and only move forward once everything is aligned.</div>
-        </details>
+        <!-- Left column -->
+        <div class="faq__coluna">
+          <details>
+            <summary>How long does it take to build a website?</summary>
+            <div class="faq__resposta">A landing page or one-page site is typically ready within 1 to 2 weeks once we receive your final text and images. A multi-page site usually takes between 2 and 4 weeks.</div>
+          </details>
+          <details>
+            <summary>Do I need to pay a monthly fee?</summary>
+            <div class="faq__resposta">No. The project is a one-time payment, with no mandatory monthly fees, and we offer the first year of maintenance. Recurring costs only apply if you choose to continue with maintenance after that period, sign up for social media management, or get your own domain name.</div>
+          </details>
+          <details>
+            <summary>How much does a website cost?</summary>
+            <div class="faq__resposta">The price depends on the type of project and on what you need, so we don't work with fixed prices. Request a free quote, tell us what you have in mind and we'll present you with the terms of the service.</div>
+          </details>
+          <details>
+            <summary>I already have a domain, can you use it?</summary>
+            <div class="faq__resposta">Yes. We connect your existing domain to the new site. If you don't have one yet, we can help you choose and register one.</div>
+          </details>
+        </div>
+        <!-- Right column -->
+        <div class="faq__coluna">
+          <details>
+            <summary>Can I edit the site myself once it's live?</summary>
+            <div class="faq__resposta">Yes, for simple changes like text, photos, or opening hours. We deliver clearly commented code and explain, in plain language, where and how to edit it. For bigger changes, we're available.</div>
+          </details>
+          <details>
+            <summary>Will the site show up on Google?</summary>
+            <div class="faq__resposta">Every site we build is already optimised for search engines: semantic structure, fast loading, well-organised text and structured data. That's the foundation of good SEO. Ranking well for competitive searches may need ongoing content work, which we can also support.</div>
+          </details>
+          <details>
+            <summary>Do you build online stores?</summary>
+            <div class="faq__resposta">Our focus is institutional and presentation websites, without shopping carts or payment systems. If your business needs an online store, we're happy to discuss the right solution for you.</div>
+          </details>
+          <details>
+            <summary>How do we get started?</summary>
+            <div class="faq__resposta">Fill in the form or contact us by email or Instagram. We'll talk about your business, propose a visual direction and a timeline, and only move forward once everything is aligned.</div>
+          </details>
+        </div>
       </div>
     </div>
   </section>
@@ -680,7 +714,7 @@
       <div class="cabecalho-seccao surge">
         <span class="etiqueta">Contact</span>
         <h2>Let's start your project</h2>
-        <p>Fill in the form with a few details, or reach us directly — we reply within one business day.</p>
+        <p>Fill in the form with a few details, or reach us directly. We will get back to you as soon as possible.</p>
       </div>
 
       <div class="contacto">

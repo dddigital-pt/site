@@ -647,6 +647,23 @@ ul { margin: 0; padding: 0; list-style: none; }
 .maqueta__cracha--1 { top: -12px; right: 18px; background: var(--verde); color: var(--lima); }
 .maqueta__cracha--2 { bottom: 10px; left: -14px; background: var(--branco); color: var(--suave); border: 1px solid var(--linha); }
 
+/* Imagem real do serviço (em vez da maqueta). Aparece em todos os ecrãs:
+   no telemóvel fica por cima do texto, no PC fica ao lado.
+   Para trocar a imagem, substitui o ficheiro em img/ mantendo o nome. */
+.painel-servico__visual--foto { display: block; order: -1; margin: 0; }
+.painel-servico__visual--foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  background: var(--nevoa);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-alta);
+}
+/* Imagem vertical (ementas): não deixar crescer demasiado */
+.painel-servico__visual--vertical img { max-width: 340px; }
+
 
 /* ===== 07. PROCESSO (CAMINHO) =============================
    Um percurso vertical, do primeiro contacto ao site no ar.
@@ -760,7 +777,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: 2.1rem;
   font-weight: 700;
   color: var(--lima);
-  line-height: 1;
+  line-height: 1.15;
   margin-bottom: 6px;
 }
 .numeros__item p { font-size: .9rem; color: rgba(255, 255, 255, .72); }
@@ -770,7 +787,13 @@ ul { margin: 0; padding: 0; list-style: none; }
    Usa <details>/<summary> do próprio HTML: funciona mesmo
    que o JavaScript esteja desligado.
    ========================================================= */
-.faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; max-width: 860px; }
+.faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+/* Duas colunas independentes: abrir uma pergunta não mexe na coluna ao lado */
+.faq__coluna { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+@media (min-width: 820px) {
+  .faq { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; }
+  .faq__coluna { gap: 16px; }
+}
 
 .faq details {
   background: var(--branco);
@@ -808,6 +831,30 @@ ul { margin: 0; padding: 0; list-style: none; }
 .faq details[open] summary::after { transform: rotate(135deg); }
 
 .faq__resposta { padding: 0 22px 22px; color: var(--cinza); font-size: .97rem; }
+
+/* Animação leve ao abrir: o texto surge a deslizar suavemente */
+.faq details[open] .faq__resposta { animation: faq-abrir .35s ease both; }
+@keyframes faq-abrir {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Melhoria extra (browsers recentes): a caixa também cresce em altura, sem saltos */
+@supports selector(details::details-content) {
+  .faq { interpolate-size: allow-keywords; }
+  .faq details::details-content {
+    height: 0;
+    overflow: hidden;
+    transition: height .3s ease, content-visibility .3s allow-discrete;
+  }
+  .faq details[open]::details-content { height: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq details[open] .faq__resposta { animation: none; }
+  .faq details::details-content { transition: none; }
+  .faq summary::after { transition: none; }
+}
 
 
 /* ===== 10. CONTACTO ====================================== */
@@ -1063,6 +1110,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   .servicos-painel { padding: 44px 40px; }
   .painel-servico { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; }
   .painel-servico__visual { display: block; }
+  .painel-servico__visual--foto { order: 0; }
+  /* Imagens horizontais têm texto lá dentro: damos-lhes mais largura para se ler bem */
+  .painel-servico--foto-larga { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+  .painel-servico__visual--vertical img { max-width: 380px; }
 
   .porque { grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: start; }
   .razoes { gap: 30px; }

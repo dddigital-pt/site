@@ -257,7 +257,7 @@
 
         <div class="servicos-painel">
           <!-- SITES -->
-          <div class="painel-servico is-ativo" id="painel-sites" role="tabpanel" aria-labelledby="aba-sites" tabindex="0">
+          <div class="painel-servico painel-servico--foto-larga is-ativo" id="painel-sites" role="tabpanel" aria-labelledby="aba-sites" tabindex="0">
             <div class="painel-servico__texto">
               <h3>Sites institucionais</h3>
               <p>Soluções para diferentes necessidades, desde páginas focadas num objetivo específico a websites com várias secções.</p>
@@ -322,25 +322,16 @@
                 </a>
               </div>
             </div>
-            <div class="painel-servico__visual" aria-hidden="true">
-              <div class="maqueta">
-                <div class="maqueta__barra"><span></span><span></span><span></span></div>
-                <div class="maqueta__corpo">
-                  <span class="maqueta__icone">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-                  </span>
-                  <span class="maqueta__linha maqueta__linha--larga"></span>
-                  <span class="maqueta__linha"></span>
-                  <span class="maqueta__linha maqueta__linha--curta"></span>
-                </div>
-              </div>
-              <span class="maqueta__cracha maqueta__cracha--1">✓</span>
-              <span class="maqueta__cracha maqueta__cracha--2">★</span>
-            </div>
+            <!-- Imagens do serviço. Para trocar, substitui o ficheiro em img/ mantendo o nome. A imagem muda conforme o separador escolhido (data-sub). -->
+            <figure class="painel-servico__visual painel-servico__visual--foto">
+              <img src="img/servico-websites.webp" srcset="img/servico-websites-600.webp 600w, img/servico-websites.webp 1100w"
+                   sizes="(min-width: 900px) 560px, 92vw" width="1100" height="733"
+                   alt="Website de uma empresa de construção apresentado num portátil e num telemóvel" loading="lazy" decoding="async" data-sub="sub-sites-landing sub-sites-onepage sub-sites-premium sub-sites-pro">
+            </figure>
           </div>
 
           <!-- BIOLINKS -->
-          <div class="painel-servico" id="painel-biolinks" role="tabpanel" aria-labelledby="aba-biolinks" tabindex="0" hidden>
+          <div class="painel-servico painel-servico--foto-larga" id="painel-biolinks" role="tabpanel" aria-labelledby="aba-biolinks" tabindex="0" hidden>
             <div class="painel-servico__texto">
               <h3>Biolinks</h3>
               <p>Uma página com ligações para os teus canais, serviços, contactos e outros conteúdos relevantes, personalizada de acordo com a identidade da tua marca.</p>
@@ -354,25 +345,16 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </a>
             </div>
-            <div class="painel-servico__visual" aria-hidden="true">
-              <div class="maqueta">
-                <div class="maqueta__barra"><span></span><span></span><span></span></div>
-                <div class="maqueta__corpo">
-                  <span class="maqueta__icone">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg>
-                  </span>
-                  <span class="maqueta__linha maqueta__linha--larga"></span>
-                  <span class="maqueta__linha"></span>
-                  <span class="maqueta__linha maqueta__linha--curta"></span>
-                </div>
-              </div>
-              <span class="maqueta__cracha maqueta__cracha--1">✓</span>
-              <span class="maqueta__cracha maqueta__cracha--2">★</span>
-            </div>
+            <!-- Imagens do serviço. Para trocar, substitui o ficheiro em img/ mantendo o nome. A imagem muda conforme o separador escolhido (data-sub). -->
+            <figure class="painel-servico__visual painel-servico__visual--foto">
+              <img src="img/servico-biolinks.webp" srcset="img/servico-biolinks-600.webp 600w, img/servico-biolinks.webp 1100w"
+                   sizes="(min-width: 900px) 560px, 92vw" width="1100" height="733"
+                   alt="Biolink num telemóvel, com ligações para website, serviços, menus e guias, contactos e redes sociais" loading="lazy" decoding="async">
+            </figure>
           </div>
 
           <!-- SOLUÇÕES DIGITAIS -->
-          <div class="painel-servico" id="painel-solucoes" role="tabpanel" aria-labelledby="aba-solucoes" tabindex="0" hidden>
+          <div class="painel-servico painel-servico--foto-larga" id="painel-solucoes" role="tabpanel" aria-labelledby="aba-solucoes" tabindex="0" hidden>
             <div class="painel-servico__texto">
               <h3>Soluções digitais</h3>
               <p>Disponibiliza ementas e guias digitais aos teus clientes, com informação organizada e acessível online.</p>
@@ -411,11 +393,14 @@
               </div>
               <p class="sub-nota"><strong>Precisas de outra solução digital?</strong> <br> Se tens outra ideia em mente, conta-nos o que precisas. Podemos avaliar contigo a possibilidade de desenvolver uma solução adequada ao teu projeto.</p>
             </div>
-            <!-- Imagem do serviço. Para trocar, substitui o ficheiro em img/ mantendo o nome: servico-ementas.webp -->
-            <figure class="painel-servico__visual painel-servico__visual--foto painel-servico__visual--vertical">
+            <!-- Imagens do serviço. Para trocar, substitui o ficheiro em img/ mantendo o nome. A imagem muda conforme o separador escolhido (data-sub). -->
+            <figure class="painel-servico__visual painel-servico__visual--foto">
               <img src="img/servico-ementas.webp" srcset="img/servico-ementas-560.webp 560w, img/servico-ementas.webp 1000w"
                    sizes="(min-width: 900px) 380px, 340px" width="1000" height="1200"
-                   alt="Ementa digital num telemóvel, com pratos organizados por categorias, e código QR para aceder à ementa" loading="lazy" decoding="async">
+                   alt="Ementa digital num telemóvel, com pratos organizados por categorias, e código QR para aceder à ementa" loading="lazy" decoding="async" class="img-vertical" data-sub="sub-solucoes-ementas">
+              <img src="img/servico-guias.webp" srcset="img/servico-guias-600.webp 600w, img/servico-guias.webp 1100w"
+                   sizes="(min-width: 900px) 560px, 92vw" width="1100" height="733"
+                   alt="Guia digital de uma região num tablet e num telemóvel, com secções como roteiros, onde comer e onde ficar" loading="lazy" decoding="async" data-sub="sub-solucoes-guias" hidden>
             </figure>
           </div>
 

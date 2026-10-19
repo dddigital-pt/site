@@ -114,7 +114,7 @@
     atualizaParallax();
   }
 
-  /* ---- 6b. Sub-separadores dentro de cada serviço (Sites, Redes Sociais, Manutenção) ---- */
+  /* ---- 6b. Sub-separadores dentro de cada serviço (Sites, Soluções Digitais, Redes Sociais, Manutenção) ---- */
   document.querySelectorAll('.sub-abas').forEach(function (grupo) {
     var botoes = grupo.querySelectorAll('.sub-aba');
 
@@ -130,6 +130,15 @@
           painel.hidden = !ativa;
         }
       });
+
+      // Troca a imagem do serviço conforme o sub-separador (ex.: One-Page tem a sua imagem).
+      // Cada <img> indica em data-sub os sub-separadores em que deve aparecer.
+      var servico = nova.closest('.painel-servico');
+      if (servico) {
+        servico.querySelectorAll('.painel-servico__visual img[data-sub]').forEach(function (imagem) {
+          imagem.hidden = imagem.getAttribute('data-sub').split(' ').indexOf(nova.id) === -1;
+        });
+      }
     }
 
     botoes.forEach(function (botao, indice) {

@@ -511,7 +511,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .aba-botao__icone { display: inline-flex; flex-shrink: 0; }
 .aba-botao__icone svg { width: 18px; height: 18px; }
 
-/* Painel visível: texto de um lado, maqueta ilustrativa do outro */
+/* Painel visível: texto de um lado, imagem do serviço do outro */
 .servicos-painel { padding: 32px 24px; }
 
 .painel-servico {
@@ -602,57 +602,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 .sub-painel h4 { margin-bottom: 8px; font-size: 1.05rem; color: var(--tinta); }
 .sub-painel p { color: var(--cinza); font-size: .95rem; }
 
-/* Maqueta ilustrativa — uma pequena janela de "browser" com linhas
-   a sugerir conteúdo, para dar vida ao painel sem usar fotos de stock. */
-.painel-servico__visual { position: relative; display: none; }
-
-.maqueta {
-  background: var(--nevoa);
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
-  overflow: hidden;
-  box-shadow: var(--sombra-alta);
-}
-.maqueta__barra { display: flex; gap: 6px; padding: 12px 14px; background: var(--branco); border-bottom: 1px solid var(--linha); }
-.maqueta__barra span { width: 8px; height: 8px; border-radius: 50%; background: var(--linha); }
-
-.maqueta__corpo { padding: 32px 28px 36px; display: grid; justify-items: center; gap: 10px; }
-
-.maqueta__icone {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px; height: 56px;
-  border-radius: 14px;
-  background: var(--menta);
-  color: var(--verde-escuro);
-  margin-bottom: 8px;
-}
-.maqueta__icone svg { width: 28px; height: 28px; }
-
-.maqueta__linha { display: block; height: 9px; width: 70%; border-radius: 5px; background: var(--linha); }
-.maqueta__linha--larga { width: 85%; }
-.maqueta__linha--curta { width: 50%; }
-
-.maqueta__cracha {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px; height: 38px;
-  border-radius: 12px;
-  font-size: 1rem;
-  box-shadow: var(--sombra-alta);
-}
-.maqueta__cracha--1 { top: -12px; right: 18px; background: var(--verde); color: var(--lima); }
-.maqueta__cracha--2 { bottom: 10px; left: -14px; background: var(--branco); color: var(--suave); border: 1px solid var(--linha); }
-
 /* Imagem real do serviço (em vez da maqueta). Aparece em todos os ecrãs:
    no telemóvel fica por cima do texto, no PC fica ao lado.
    Para trocar a imagem, substitui o ficheiro em img/ mantendo o nome. */
-.painel-servico__visual--foto { display: block; order: -1; margin: 0; }
+/* align-self: start -> a imagem fica sempre no topo e não "salta" quando o texto
+   ao lado muda de altura ao passar pelos separadores. */
+.painel-servico__visual--foto { display: block; order: -1; margin: 0; align-self: start; }
 .painel-servico__visual--foto img {
   display: block;
+  animation: painel-aparece .35s ease;
   width: 100%;
   height: auto;
   margin: 0 auto;
@@ -661,8 +619,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: var(--raio);
   box-shadow: var(--sombra-alta);
 }
+.painel-servico__visual--foto img[hidden] { display: none; }
 /* Imagem vertical (ementas): não deixar crescer demasiado */
-.painel-servico__visual--vertical img { max-width: 340px; }
+.painel-servico__visual--foto img.img-vertical { max-width: 340px; }
 
 
 /* ===== 07. PROCESSO (CAMINHO) =============================
@@ -1113,7 +1072,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   .painel-servico__visual--foto { order: 0; }
   /* Imagens horizontais têm texto lá dentro: damos-lhes mais largura para se ler bem */
   .painel-servico--foto-larga { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
-  .painel-servico__visual--vertical img { max-width: 380px; }
+  .painel-servico__visual--foto img.img-vertical { max-width: 380px; }
 
   .porque { grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: start; }
   .razoes { gap: 30px; }

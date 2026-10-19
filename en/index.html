@@ -257,7 +257,7 @@
 
         <div class="servicos-painel">
           <!-- WEBSITES -->
-          <div class="painel-servico is-ativo" id="painel-sites" role="tabpanel" aria-labelledby="aba-sites" tabindex="0">
+          <div class="painel-servico painel-servico--foto-larga is-ativo" id="painel-sites" role="tabpanel" aria-labelledby="aba-sites" tabindex="0">
             <div class="painel-servico__texto">
               <h3>Business websites</h3>
               <p>Solutions for different needs, from pages focused on a single goal to multi-section websites.</p>
@@ -322,25 +322,16 @@
                 </a>
               </div>
             </div>
-            <div class="painel-servico__visual" aria-hidden="true">
-              <div class="maqueta">
-                <div class="maqueta__barra"><span></span><span></span><span></span></div>
-                <div class="maqueta__corpo">
-                  <span class="maqueta__icone">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-                  </span>
-                  <span class="maqueta__linha maqueta__linha--larga"></span>
-                  <span class="maqueta__linha"></span>
-                  <span class="maqueta__linha maqueta__linha--curta"></span>
-                </div>
-              </div>
-              <span class="maqueta__cracha maqueta__cracha--1">✓</span>
-              <span class="maqueta__cracha maqueta__cracha--2">★</span>
-            </div>
+            <!-- Service images. To swap one, replace the file in img/ keeping the same name. The image changes with the selected tab (data-sub). -->
+            <figure class="painel-servico__visual painel-servico__visual--foto">
+              <img src="../img/servico-websites.webp" srcset="../img/servico-websites-600.webp 600w, ../img/servico-websites.webp 1100w"
+                   sizes="(min-width: 900px) 560px, 92vw" width="1100" height="733"
+                   alt="Construction company website shown on a laptop and a phone" loading="lazy" decoding="async" data-sub="sub-sites-landing sub-sites-onepage sub-sites-premium sub-sites-pro">
+            </figure>
           </div>
 
           <!-- BIOLINKS -->
-          <div class="painel-servico" id="painel-biolinks" role="tabpanel" aria-labelledby="aba-biolinks" tabindex="0" hidden>
+          <div class="painel-servico painel-servico--foto-larga" id="painel-biolinks" role="tabpanel" aria-labelledby="aba-biolinks" tabindex="0" hidden>
             <div class="painel-servico__texto">
               <h3>Biolinks</h3>
               <p>A page with links to your channels, services, contact details and other relevant content, customised to match your brand identity.</p>
@@ -354,25 +345,16 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </a>
             </div>
-            <div class="painel-servico__visual" aria-hidden="true">
-              <div class="maqueta">
-                <div class="maqueta__barra"><span></span><span></span><span></span></div>
-                <div class="maqueta__corpo">
-                  <span class="maqueta__icone">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg>
-                  </span>
-                  <span class="maqueta__linha maqueta__linha--larga"></span>
-                  <span class="maqueta__linha"></span>
-                  <span class="maqueta__linha maqueta__linha--curta"></span>
-                </div>
-              </div>
-              <span class="maqueta__cracha maqueta__cracha--1">✓</span>
-              <span class="maqueta__cracha maqueta__cracha--2">★</span>
-            </div>
+            <!-- Service images. To swap one, replace the file in img/ keeping the same name. The image changes with the selected tab (data-sub). -->
+            <figure class="painel-servico__visual painel-servico__visual--foto">
+              <img src="../img/servico-biolinks.webp" srcset="../img/servico-biolinks-600.webp 600w, ../img/servico-biolinks.webp 1100w"
+                   sizes="(min-width: 900px) 560px, 92vw" width="1100" height="733"
+                   alt="Biolink on a phone, with links to a website, services, menus and guides, contact details and social media" loading="lazy" decoding="async">
+            </figure>
           </div>
 
           <!-- DIGITAL SOLUTIONS -->
-          <div class="painel-servico" id="painel-solucoes" role="tabpanel" aria-labelledby="aba-solucoes" tabindex="0" hidden>
+          <div class="painel-servico painel-servico--foto-larga" id="painel-solucoes" role="tabpanel" aria-labelledby="aba-solucoes" tabindex="0" hidden>
             <div class="painel-servico__texto">
               <h3>Digital solutions</h3>
               <p>Offer digital menus and guides to your customers, with information organised and accessible online.</p>
@@ -411,11 +393,14 @@
               </div>
               <p class="sub-nota"><strong>Need another digital solution?</strong> <br> If you have another idea in mind, tell us what you need. We can assess with you the possibility of developing a solution suited to your project.</p>
             </div>
-            <!-- Service image. To swap it, replace the file in img/ keeping the same name: servico-ementas.webp -->
-            <figure class="painel-servico__visual painel-servico__visual--foto painel-servico__visual--vertical">
+            <!-- Service images. To swap one, replace the file in img/ keeping the same name. The image changes with the selected tab (data-sub). -->
+            <figure class="painel-servico__visual painel-servico__visual--foto">
               <img src="../img/servico-ementas.webp" srcset="../img/servico-ementas-560.webp 560w, ../img/servico-ementas.webp 1000w"
                    sizes="(min-width: 900px) 380px, 340px" width="1000" height="1200"
-                   alt="Digital menu on a phone, with dishes organised by category, and a QR code to open the menu" loading="lazy" decoding="async">
+                   alt="Digital menu on a phone, with dishes organised by category, and a QR code to open the menu" loading="lazy" decoding="async" class="img-vertical" data-sub="sub-solucoes-ementas">
+              <img src="../img/servico-guias.webp" srcset="../img/servico-guias-600.webp 600w, ../img/servico-guias.webp 1100w"
+                   sizes="(min-width: 900px) 560px, 92vw" width="1100" height="733"
+                   alt="Digital regional guide on a tablet and a phone, with sections such as itineraries, where to eat and where to stay" loading="lazy" decoding="async" data-sub="sub-solucoes-guias" hidden>
             </figure>
           </div>
 

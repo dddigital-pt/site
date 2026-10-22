@@ -620,6 +620,33 @@ ul { margin: 0; padding: 0; list-style: none; }
   box-shadow: var(--sombra-alta);
 }
 .painel-servico__visual--foto img[hidden] { display: none; }
+
+/* Cartão ilustrado do separador "Complementos" (enquanto não há fotografias reais) */
+.cartao-extra {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  aspect-ratio: 3 / 2;
+  border-radius: var(--raio);
+  background: var(--verde) radial-gradient(420px 260px at 90% 0%, rgba(167, 230, 58, .22), transparent 65%);
+  color: var(--lima);
+  box-shadow: var(--sombra-alta);
+  animation: painel-aparece .35s ease;
+}
+.cartao-extra[hidden] { display: none; }
+.cartao-extra svg { width: 84px; height: 84px; }
+.cartao-extra span {
+  font-family: var(--fonte-mono);
+  font-size: .85rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .85);
+}
+
+/* Nota do serviço: fica por baixo da imagem no PC (aproveita o espaço livre)
+   e por baixo do texto no telemóvel. */
+.painel-servico--nota > .sub-nota { margin: 0; }
 /* Imagem vertical (ementas): não deixar crescer demasiado */
 .painel-servico__visual--foto img.img-vertical { max-width: 340px; }
 
@@ -727,9 +754,31 @@ ul { margin: 0; padding: 0; list-style: none; }
   background-image: radial-gradient(420px 220px at 90% 0%, rgba(167, 230, 58, .22), transparent 65%);
 }
 .numeros h3 { color: var(--branco); margin-bottom: 22px; }
-.numeros__lista { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
-.numeros__item { padding-bottom: 22px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
-.numeros__item:last-child { padding-bottom: 0; border-bottom: 0; }
+.numeros__lista { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; counter-reset: numero; }
+/* Cada item é um pequeno cartão translúcido, com um número grande e discreto ao fundo */
+.numeros__item {
+  position: relative;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .05);
+  counter-increment: numero;
+  overflow: hidden;
+  transition: border-color .25s, background-color .25s;
+}
+.numeros__item::after {
+  content: '0' counter(numero);
+  position: absolute;
+  right: 16px;
+  top: 6px;
+  font-family: var(--fonte-titulo);
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, .07);
+  pointer-events: none;
+}
+.numeros__item:hover { border-color: rgba(167, 230, 58, .45); background: rgba(255, 255, 255, .08); }
 .numeros__valor {
   display: block;
   font-family: var(--fonte-titulo);
@@ -739,7 +788,21 @@ ul { margin: 0; padding: 0; list-style: none; }
   line-height: 1.15;
   margin-bottom: 6px;
 }
-.numeros__item p { font-size: .9rem; color: rgba(255, 255, 255, .72); }
+/* Ícone pequeno junto ao título de cada item */
+.numeros__valor { display: flex; align-items: center; gap: 12px; font-size: 1.3rem; overflow-wrap: anywhere; }
+.numeros__icone {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(167, 230, 58, .14);
+  color: var(--lima);
+}
+.numeros__icone svg { width: 20px; height: 20px; }
+.numeros__item p { font-size: .9rem; color: rgba(255, 255, 255, .72);
+}
 
 
 /* ===== 09. FAQ ===========================================
@@ -1073,9 +1136,40 @@ ul { margin: 0; padding: 0; list-style: none; }
   /* Imagens horizontais têm texto lá dentro: damos-lhes mais largura para se ler bem */
   .painel-servico--foto-larga { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
   .painel-servico__visual--foto img.img-vertical { max-width: 380px; }
+  /* Painéis com nota: texto à esquerda (ocupa 2 linhas); imagem e nota empilhadas à direita */
+  .painel-servico--nota { grid-template-rows: auto 1fr; row-gap: 20px; }
+  .painel-servico--nota > .painel-servico__texto { grid-column: 1; grid-row: 1 / span 2; }
+  .painel-servico--nota > .painel-servico__visual { grid-column: 2; grid-row: 1; }
+  .painel-servico--nota > .sub-nota { grid-column: 2; grid-row: 2; align-self: start; }
+
+  /* Painéis com sub-separadores (Sites, Soluções Digitais, Redes Sociais, Manutenção):
+     título e introdução em cima, todos os sub-separadores numa só linha, e por baixo
+     o texto do subserviço lado a lado com a imagem (a imagem fica ao nível do título do subserviço).
+     "display: contents" faz com que os elementos do texto passem a ser células da grelha do painel. */
+  .painel-servico.painel-servico--abas {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto auto 1fr auto;
+    column-gap: 48px;
+    row-gap: 0;
+    align-items: start;
+  }
+  .painel-servico--abas > .painel-servico__texto { display: contents; }
+  .painel-servico--abas .painel-servico__texto > h3 { grid-column: 1 / -1; grid-row: 1; }
+  .painel-servico--abas .painel-servico__texto > p { grid-column: 1 / -1; grid-row: 2; margin-bottom: 0; }
+  .painel-servico--abas .sub-abas { grid-column: 1 / -1; grid-row: 3; margin: 16px 0 20px; padding-top: 16px; }
+  .painel-servico--abas .sub-painel { grid-column: 1; grid-row: 4; padding-top: 0; }
+  .painel-servico--abas > .painel-servico__visual { grid-column: 2; grid-row: 4; }
+  /* A nota ocupa a largura toda, no fundo do serviço */
+  .painel-servico.painel-servico--abas > .sub-nota { grid-column: 1 / -1; grid-row: 5; margin-top: 24px; }
+  .painel-servico--abas .servico__lista { margin: 14px 0 22px; gap: 8px; }
+  .painel-servico--abas .painel-servico__visual--foto img.img-vertical { max-width: 290px; }
 
   .porque { grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: start; }
   .razoes { gap: 30px; }
+  /* Baixa a caixa verde para o topo ficar alinhado com o título (e não com a etiqueta "Porquê nós") */
+  .numeros { margin-top: 52.6px; }
+  /* A caixa acompanha o scroll enquanto se lêem as razões à esquerda */
+  .numeros { position: sticky; top: 104px; }
 
   /* Caminho na horizontal, em zigue-zague, para poupar espaço vertical */
   .caminho {
